@@ -15,10 +15,23 @@
 
 <body>
     @once
-    @include('includes.nav')    
+        @include('includes.nav')
     @endonce
     @yield('content')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script>
+        // Initialization for ES Users
+        import {
+            Input,
+            Ripple,
+            initTWE,
+        } from "tw-elements";
+
+        initTWE({
+            Input,
+            Ripple
+        });
+    </script>
 </body>
 
 </html>
