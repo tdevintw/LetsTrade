@@ -8,19 +8,26 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Repositories\UserRepositoryInterface;
 
 class AuthController extends Controller
 {
+    protected $UserRepository;
+
+    public function __construct(UserRepositoryInterface $UserRepository){
+        $this->UserRepository = $UserRepository;
+    }
+
 
     public function loginView()
     {
         
-        return view('Auth.login');
+        return view('auth.login');
     }
     public function registerView()
     {
         
-        return view('Auth.register');
+        return view('auth.register');
     }
 
     public function login(LoginRequest $request){
@@ -35,7 +42,8 @@ class AuthController extends Controller
         $formRequest = $request->validated();
         $formRequest['password']= Hash::make($formRequest['password']);
 
-        $user = User::create($formRequest);
+        // $user = User::create($formRequest);
+        $user = $this->UserRepository->create($formRequest);
         auth()->login($user);
 
         return redirect()->route('home');
@@ -50,7 +58,7 @@ class AuthController extends Controller
     }
 
     public function forgetPassword(){
-        return view('Auth.forgetPassword');
+        return view('auth.forgetPassword');
 
     }
     

@@ -41,7 +41,7 @@
 
             <div class="flex items-center justify-between">
 
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="">
+                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{route('password.request')}}">
                         {{ __('Forgot your password?') }}
                     </a>
 
