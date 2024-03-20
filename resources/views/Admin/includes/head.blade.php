@@ -4,8 +4,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/x-icon"
-    href="{{ asset('storage/images/ticket.png') }}">
-    <title>Evanto-Dashboard</title>
+    href="https://cdn-icons-png.flaticon.com/256/1828/1828673.png">
+    <title>Dashboard</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/simplebar.css') }}">
     <!-- Fonts CSS -->
