@@ -10,6 +10,8 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+
+    
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -21,6 +23,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'city_id',
+        'location',
+        'adress',
+        'postal_code',
+        'image',
+        'bg_image'
     ];
 
     /**
@@ -42,4 +50,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    protected $table = "users";
+
+    public function city(){
+        return $this->belongsTo(City::class);
+    }
 }

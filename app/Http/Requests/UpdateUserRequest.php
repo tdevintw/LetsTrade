@@ -23,7 +23,6 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name'=>['required','min:3'],
-            'email'=>['required','email'],
             'password_confirmation' => ['same:password']
         ];
     }

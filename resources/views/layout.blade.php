@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="{{ asset('assets/css/nucleo-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/argon-dashboard-tailwind.css?v=1.0.1"') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/nucleo-svg.css') }}">
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <style>
         #dropdownAvatar {
             position: fixed;
@@ -40,11 +40,8 @@
 </head>
 
 <body>
-    @once
-        @include('includes.nav')
-    @endonce
+
     @yield('content')
-    <!-- plugin for scrollbar  -->
 
     <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}" async></script>
     <script src="{{ asset('assets/js/argon-dashboard-tailwind.js?v=1.0.1') }}" async></script>
@@ -68,6 +65,7 @@
             }
         });
     </script>
+    
 </body>
 
 </html>

@@ -59,7 +59,7 @@
                                 type="button">
                                 <span class="sr-only">Open user menu</span>
                                 <img class="w-8 h-8 rounded-full"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&usqp=CAU"
+                                    src="{{asset('storage/'.$user->image)}}"
                                     alt="user photo" />
                             </button>
 
@@ -80,7 +80,14 @@
                                         </li>
                                     </ul>
                                 @endif
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                        aria-labelledby="dropdownUserAvatarButton">
 
+                                        <li>
+                                            <a href="{{ route('profile.index') }}"
+                                                class="block px-4  hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
+                                        </li>
+                                    </ul>
                                 <div class="py-2">
                                     <form action="{{ route('auth.logout') }}" method="POST">
                                         @csrf

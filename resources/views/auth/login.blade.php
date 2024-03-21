@@ -1,5 +1,8 @@
 @extends('layout')
 @section('content')
+@once
+        @include('includes.nav')
+    @endonce
     <main class="mt-0 transition-all duration-200 ease-in-out">
         <section>
             <div class="relative flex items-center min-h-screen p-0 overflow-hidden bg-center bg-cover">

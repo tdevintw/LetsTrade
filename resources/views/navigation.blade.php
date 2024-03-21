@@ -49,8 +49,8 @@
                             <button id="dropdownUserAvatarButton" 
                              
                                 >
-                                <img class="w-8 h-8 rounded-full"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&usqp=CAU"
+                                <img class="w-12 rounded-full"
+                                src="{{ asset('storage/' . $user->image) }}"
                                     alt="user photo" />
                             </button>
 
@@ -66,7 +66,7 @@
                                         aria-labelledby="dropdownUserAvatarButton">
 
                                         <li>
-                                            <a href="{{ route('dashboard') }}"
+                                            <a href="{{ route('dashboard.index') }}"
                                                 class="block px-4  hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                                         </li>
                                     </ul>
@@ -75,7 +75,7 @@
                                         aria-labelledby="dropdownUserAvatarButton">
 
                                         <li>
-                                            <a href=""
+                                            <a href="{{route('profile.index')}}"
                                                 class="block px-4  hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profile</a>
                                         </li>
                                     </ul>

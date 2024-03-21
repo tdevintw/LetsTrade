@@ -1,5 +1,8 @@
 @extends('layout')
 @section('content')
+@once
+        @include('includes.nav')
+    @endonce
     <main class="mt-0 transition-all duration-200 ease-in-out pb-5">
         <section class="min-h-screen">
             <div
