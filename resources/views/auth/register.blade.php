@@ -27,8 +27,8 @@
                             <div class="p-6 mb-0 text-center bg-white border-b-0 rounded-t-2xl">
                                 <h5>Register with</h5>
                             </div>
-                            <div class="flex flex-wrap px-3 -mx-3 sm:px-6 xl:px-12 justify-center ">
-                                <div class="w-80 ">
+                            <div class="flex flex-wrap mx-3 sm:px-6  justify-center ">
+                                <div class="w-full ">
                                     <a class="flex justify-center w-full px-5 py-2.5 mb-4 font-bold text-center text-gray-200 uppercase align-middle transition-all bg-transparent border border-gray-200 border-solid rounded-lg shadow-none cursor-pointer hover:-translate-y-px leading-pro text-xs ease-in tracking-tight-rem bg-150 bg-x-25 hover:bg-transparent hover:opacity-75"
                                         href="{{route('google.redirect')}}">
                                         <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1"

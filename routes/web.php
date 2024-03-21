@@ -12,7 +12,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\ProfileController;
 
 //open for all
-
+Route::get('getCities/{country}', [ProfileController::class,'getCities'])->name('getCities');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/logout', function(){
   return   view('errors.404');

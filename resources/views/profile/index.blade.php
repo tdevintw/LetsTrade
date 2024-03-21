@@ -162,15 +162,15 @@
                     <div class="flex-none w-auto max-w-full px-3">
                         <div
                             class="relative inline-flex items-center justify-center text-white transition-all duration-200 ease-in-out text-base h-19 w-19 rounded-xl">
-                            <img src="{{ asset('storage/' . $user->image) }}" alt="profile_image"
-                                class="w-full shadow-2xl rounded-xl" />
+                            <img  src="{{ asset('storage/' . $user->image) }}" alt="profile_image"
+                                class="w-full h-full shadow-2xl rounded-xl" />
                         </div>
                     </div>
                     <div class="flex-none w-auto max-w-full px-3 my-auto">
                         <div class="h-full">
-                            <h5 class="mb-1 dark:text-white">Sayo Kravits</h5>
-                            <p class="mb-0 font-semibold leading-normal dark:text-white dark:opacity-60 text-sm">Public
-                                Relations</p>
+                            <h5 class="mb-1 dark:text-white">{{$user->name}}</h5>
+                            {{-- <p class="mb-0 font-semibold leading-normal dark:text-white dark:opacity-60 text-sm">Public
+                                Relations</p> --}}
                         </div>
                     </div>
                     <div class="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
@@ -207,9 +207,9 @@
         <div class="w-full p-6 mx-auto">
             <div class="flex flex-wrap -mx-3">
                 <div class="w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-0">
-                    <form action="{{ route('profile.update',$user->id) }}" method="POST">
-                    @csrf
-                      @method('PATCH')
+                    <form action="{{ route('profile.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PATCH')
                         <div
                             class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                             <div class="border-black/12.5 rounded-t-2xl border-b-0 border-solid p-6 pb-0">
@@ -225,11 +225,14 @@
                                 <div class="flex flex-wrap -mx-3">
                                     <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                         <div class="mb-4">
-                                            <label for="username"
+                                            <label for="name"
                                                 class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Username</label>
-                                            <input type="text" name="name" value="{{$user->name}}"
+                                            <input type="text" name="name" value="{{ $user->name }}"
                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                         </div>
+                                        @error('name')
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
                                         <div class="mb-4">
@@ -239,6 +242,33 @@
                                             <input type="text" name="password" placeholder="•••••••••••••••••"
                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                         </div>
+                                        @error('password')
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                        <div class="mb-4">
+                                            <label for="image"
+                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Profile
+                                                Image</label>
+                                            <input type="file" name="image"
+                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                        </div>
+                                        @error('image')
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                    <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                        <div class="mb-4">
+                                            <label for="password"
+                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">
+                                                Background Image</label>
+                                            <input type="file" name="bg_image"
+                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                        </div>
+                                        @error('bg_image')
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <hr
@@ -251,49 +281,45 @@
                                         <div class="mb-4">
                                             <label for="address"
                                                 class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Address</label>
-                                            <input type="text" name="adress"
-                                                value="{{$user->adress}}"
+                                            <input type="text" name="adress" value="{{ $user->adress }}"
                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                         </div>
                                     </div>
                                     <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
                                         <div class="mb-4">
-                                            <label for="city"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">City</label>
- 
-                                               
-                                        <select name="city_id" id=""  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
-                                            <option value="{{$user->city->id}}">{{$user->city->name}}</option>
-                                            @foreach ($cities as $city)
-                                            <option value="{{$city->id}}">{{$city->name}}</option>
-                                            @endforeach
-                                            
-                                        </select>
-                                            </div>
+                                            <label for="city" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">City</label>
+                                            <select name="city_id" id="city_id" class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+                                                <option value="{{ $user->city->id }}">{{ $user->city->name }}</option>
+                                            </select>
+                                        </div>
+                                        @error('city_id')
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                                     </div>
+                                    
                                     <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
                                         <div class="mb-4">
-                                            <label for="city"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">City</label>
- 
-                                               
-                                        <select name="country_id" id=""  class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
-                                            <option value="{{$user->city->country->id}}">{{$user->city->country->name}}</option>
-                                            @foreach ($countries as $country)
-                                            <option value="{{$country->id}}">{{$country->name}}</option>
-                                            @endforeach
-                                            
-                                        </select>
-                                            </div>
+                                            <label for="country" class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Country</label>
+                                            <select name="country_id" id="country_id" class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+                                                <option value="{{ $user->city->country->id }}">{{ $user->city->country->name }}</option>
+                                                @foreach ($countries as $country)
+                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
+                                    
                                     <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
                                         <div class="mb-4">
                                             <label for="postal_code"
                                                 class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Postal
                                                 code</label>
-                                            <input type="number" name="postal_code" value="{{$user->postal_code}}"
+                                            <input type="number" name="postal_code" value="{{ $user->postal_code }}"
                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                         </div>
+                                        @error('postal_code')
+                                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <hr
@@ -306,11 +332,13 @@
                                             <label for="about me"
                                                 class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">About
                                                 me</label>
-                                            <input type="text" name="about"
-                                                value="{{$user->about}}"
+                                            <input type="text" name="about" value="{{ $user->about }}"
                                                 class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
                                         </div>
                                     </div>
+                                    @error('about')
+                                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -319,13 +347,13 @@
                 <div class="w-full max-w-full px-3 mt-6 shrink-0 md:w-4/12 md:flex-0 md:mt-0">
                     <div
                         class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
-                        <img class="w-full rounded-t-2xl" src="../assets/img/bg-profile.jpg" alt="profile cover image">
+                        <img class="w-full rounded-t-2xl" src="{{asset('storage/'.$user->bg_image)}}" alt="profile cover image">
                         <div class="flex flex-wrap justify-center -mx-3">
                             <div class="w-4/12 max-w-full px-3 flex-0 ">
-                                <div class="mb-6 -mt-6 lg:mb-0 lg:-mt-16">
+                                <div class="flex justify-center mb-6 -mt-6 lg:mb-0 lg:-mt-16">
                                     <a href="javascript:;">
-                                        <img class="h-auto max-w-full border-2 border-white border-solid rounded-circle"
-                                            src="../assets/img/team-2.jpg" alt="profile image">
+                                        <img style="width: 100px; border-radius: 50%;height:100px;" class="max-w-full border-2 border-white border-solid"
+                                            src="{{asset('storage/'.$user->image)}}" alt="profile image">
                                     </a>
                                 </div>
                             </div>

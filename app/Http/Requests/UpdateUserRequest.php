@@ -23,7 +23,9 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name'=>['required','min:3'],
-            'password_confirmation' => ['same:password']
+            'password_confirmation' => ['same:password'],
+            'image' => ['image','mimes:jpeg,png,jpg,svg,avif|max:2048'],
+
         ];
     }
 }
