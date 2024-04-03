@@ -64,6 +64,13 @@
 
                                             </tbody>
                                         </table>
+                                        
+
+                                    
+                                        {{ $subcategories->links('vendor.pagination.bootstrap-5') }}
+                                   
+
+                                  
                                         @if (count($subcategories)==0)
                                         <h3 style="text-align: center">There is no records for the moment</h3>    
                                         @endif

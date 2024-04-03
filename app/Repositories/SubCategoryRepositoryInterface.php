@@ -10,4 +10,6 @@ interface SubCategoryRepositoryInterface {
     public function create(array $data);
 
     public function update(object $subcategory,array $data);
+
+    public function getSubcategories($category);
 }

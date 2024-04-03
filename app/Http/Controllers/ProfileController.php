@@ -6,6 +6,8 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\User;
+use App\Repositories\CityRepository;
+use App\Repositories\CountryRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,18 +15,23 @@ use Illuminate\Support\Facades\Auth;
 class ProfileController extends Controller
 {
     protected $UserRepository;
+    protected $CountryRepository;
+    protected $CityRepository;
 
-    public function __construct(UserRepository $UserRepository)
+    public function __construct(UserRepository $UserRepository , CountryRepository $CountryRepository , CityRepository $CityRepository)
     {
         $this->UserRepository = $UserRepository;
+        $this->CityRepository = $CityRepository;
+        $this->CountryRepository = $CountryRepository;
     }
 
     public function index()
     {
 
         $user = Auth::user();
-        $cities = City::get();
-        $countries = Country::get();
+        $cities = $this->CityRepository->get();
+        $countries = $this->CountryRepository->get();
+        
         return  view('profile.index', compact('user', 'cities', 'countries'));
     }
 
@@ -64,7 +71,8 @@ class ProfileController extends Controller
 
     public function getCities($country)
     {
-        $cities = City::where('country_id', $country)->pluck('name', 'id');
+        
+        $cities = $this->CityRepository->cities($country);
         return response()->json($cities);
     }
 }

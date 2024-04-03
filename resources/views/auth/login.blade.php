@@ -56,12 +56,12 @@
 
                                 <div class="relative w-full max-w-full px-3  text-center shrink-0">
                                     <p
-                                        class="z-20 inline px-4 mb-2 font-semibold leading-normal bg-white text-sm text-slate-400">
+                                        class="z-20 inline px-4 mb-2 font-semibold leading-normal  text-sm text-slate-400">
                                         or with</p>
                                 </div>
                                 <div class="flex flex-wrap  mx-3 sm:px-6  justify-center mt-4 ">
                                     <div class="w-full ">
-                                        <a class="flex justify-center w-full px-5 py-2.5 mb-4 font-bold text-center text-gray-200 uppercase align-middle transition-all bg-transparent border border-gray-200 border-solid rounded-lg shadow-none cursor-pointer hover:-translate-y-px leading-pro text-xs ease-in tracking-tight-rem bg-150 bg-x-25 hover:bg-transparent hover:opacity-75"
+                                        <a class=" flex justify-center w-full px-5 py-2.5 mb-4 font-bold text-center text-gray-200 uppercase align-middle transition-all bg-transparent border border-gray-500 border-solid rounded-lg shadow-none cursor-pointer hover:-translate-y-px leading-pro text-xs ease-in tracking-tight-rem bg-150 bg-x-25 hover:bg-transparent hover:opacity-75"
                                             href="{{route('google.redirect')}}">
                                             <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1"
                                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -97,20 +97,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div
+                        <div style="background-image: url(https://i.ibb.co/GxL0Dgj/register.jpg);background-size: cover;"
                             class="absolute top-0 right-0 flex-col justify-center hidden w-6/12 h-full max-w-full px-3 pr-0 my-auto text-center flex-0 lg:flex">
-                            <div
-                                class="relative flex flex-col justify-center h-full bg-cover px-24 m-4 overflow-hidden bg-[url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-ill.jpg')] rounded-xl">
-                                <span
-                                    class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-blue-500 to-violet-500 opacity-60"></span>
-                                <h4 class="z-20 mt-12 font-bold text-white">
-                                    "Attention is the new currency"
-                                </h4>
-                                <p class="z-20 text-white">
-                                    The more effortless the writing looks, the more effort the
-                                    writer actually put into the process.
-                                </p>
-                            </div>
+                            <h4 class="z-20 mt-12 font-bold text-white">
+                                Start Trading Now
+                            </h4>
+                            <p class="z-20 text-white">
+                               <b></b> You can find more then what you think.
+                            </p>
                         </div>
                     </div>
                 </div>

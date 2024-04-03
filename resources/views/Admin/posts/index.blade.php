@@ -13,13 +13,10 @@
                         <div class="row">
                             <!-- Small table -->
                             <div class="col-md-12 my-4">
-                                <h2 class="h4 mb-1">events Management</h2>
-                                <p class="mb-3">here you can manage the platform's events requests</p>
-                                <div style="margin-bottom: 10px">
-                                    <a href="{{route('events.create')}}"><button type="button" class="btn btn-success">New Event</button></a>
-                                </div>
+                                <h2 class="h4 mb-1">Posts Management</h2>
+                                <p class="mb-3">here you can manage the platform's posts</p>
                                 <div class="card shadow">
-                                    <div class="card-body">
+                                    <div class="card-body" style="overflow-y: auto;">
                                         <!-- table -->
                                         <table class="table table-borderless table-hover">
                                             <thead>
@@ -27,52 +24,61 @@
                                                     <th>ID</th>
                                                     <th>Title</th>
                                                     <th>Description</th>
-                                                    <th>Owner</th>
+                                                    <th>Location</th>
                                                     <th>Category</th>
+                                                    <th>SubCategory</th>
+                                                    <th>Note</th>
+                                                    <th>Condition</th>
+                                                    <th>Access</th>
                                                     <th>Status</th>
-                                                    <th>Image</th>
-                                                    <th>Date</th>
-                                                    <th>Loaction</th>
-                                                    <th>Reserve Method</th>
-                                                    <th>Created_at</th>
+                                                    <th>Created</th>
+                                                    <th>Updated</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($events as $event)
+                                                @foreach ($posts as $post)
                                                     <tr>
-                                                        <td>{{ $event->id }}</td>
-                                                        <td>{{ $event->title }}</td>
-                                                        <td>{{ $event->description }}</td>
-                                                        <td>{{ $event->user->name }}</td>
-                                                        <td>{{ $event->category->name }}</td>
-                                                        <td>{{ $event->status }}</td>
-                                                        <td><img style="width:50px" src="{{asset('storage/' .  $event->image )}}" alt=""></td>
-                                                        <td>{{ $event->date }}</td>
-                                                        <td>{{ $event->location }}</td>
-                                                        <td>{{ $event->reserve_method}}</td>
-                                                        <td>{{ $event->created_at }}</td>
+                                                        <td>{{ $post->id }}</td>
+                                                        <td>{{ $post->title }}</td>
+                                                        <td>{{ $post->description }}</td>
+                                                        <td>{{ $post->location }}</td>
+                                                        <td>{{ $post->subcategory->category->name }}</td>
+                                                        <td>{{ $post->subcategory->name }}</td>
+                                                        <td>{{ $post->note }}</td>
+                                                        <td>{{ $post->condition }}</td>
+                                                        <td>{{ $post->access }}</td>
+                                                        <td>{{ $post->status }}</td>
+                                                        <td>{{ $createdAt[$post->id] }}</td>
+                                                        <td>{{ $updatedAt[$post->id] }}</td>
+                                                        <td>{{ $post->name }}</td>
                                                         <td>
                                                             <button type="button" class="btn btn-success"
                                                                 data-toggle="dropdown">Actions</button>
 
                                                             <div class="dropdown-menu dropdown-menu-right">
-                                                                <form action="{{ route('accept',$event->id) }}"
-                                                                  method="post" >
-                                                                    @csrf
-                                                                    @method('PATCH')
-                                                                    <button type="submit"
-                                                                        class="dropdown-item ">Accept</button>
-                                                                </form>
-                                                            
 
-                                                                <form action="{{ route('reject',$event->id) }}"
-                                                                   method="post" >
+                                                                <form action="{{ route('posts.access',$post->id) }}"
+                                                                    method="post">
                                                                     @csrf
-                                                                    @method('PATCH')
+                                                                    @method('PUT')
+                                                                    @if ($post->access ==='authorized')
                                                                     <button type="submit"
-                                                                        class="dropdown-item ">Reject</button>
+                                                                    class="dropdown-item ">Hide</button>
+                                                                    @else
+                                                                        <button type="submit"
+                                                                        class="dropdown-item ">UnHide</button>
+                                                                    @endif
+                                                                    
                                                                 </form>
+                                                                <form action="{{ route('posts.destroy',$post->id) }}"
+                                                                    method="post">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit"
+                                                                        class="dropdown-item ">Remove</button>
+                                                                </form>
+                                                                <a class="dropdown-item" href="{{route('post.show',$post->id)}}"">See Post</a>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -80,7 +86,7 @@
 
                                             </tbody>
                                         </table>
-                                        @if (count($events)==0)
+                                        @if (count($posts)==0)
                                         <h3 style="text-align: center">There is no records for the moment</h3>    
                                         @endif
                                     </div>

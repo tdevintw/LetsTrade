@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{asset('storage/images/logo2.png')}}">
+
+
     <style>
         #dropdownAvatar {
             position: fixed;
@@ -32,14 +35,33 @@
                 padding-left: 16px;
             }
         }
+        @media (min-width: 1100px) {
+            #create-container{
+                width: 60%;
+            }
+        }
+        body{
+                background-color:#fff0e5;
+            }
+
+            @media (max-width: 500px) {
+                #Treasure-Trade{
+                font-size: 15px;
+                margin: 0;
+            }
+            #Treasure-Trade-image{
+                width: 40px;
+            }
+        
+            }
     </style>
 
-    <title>LetsTrade</title>
+    <title>Treasure Trade</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('storage/images/logo2.png') }}">
 </head>
 
 <body>
-
+    
     @yield('content')
 
     <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}" async></script>
@@ -64,26 +86,7 @@
             }
         });
     </script>
-    <script>
-        $(document).ready(function() {
-            $('#country_id').change(function() {
-                var countryId = $(this).val();
     
-                // AJAX request
-                $.ajax({
-                    url: '/getCities/' + countryId,
-                    type: 'GET',
-                    success: function(response) {
-                        var citySelect = $('#city_id');
-                        citySelect.empty();
-                        $.each(response, function(id, name) {
-                            citySelect.append($('<option></option>').attr('value', id).text(name));
-                        });
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

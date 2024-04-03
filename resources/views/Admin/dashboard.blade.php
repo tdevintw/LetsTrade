@@ -47,7 +47,7 @@
                                                             </div>
                                                             <p class="mt-3 mb-0 text-muted text-sm">
 
-                                                                <span class="text-nowrap">Since website launch</span>
+                                                                <span class="text-nowrap">Total Number Of Users</span>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -60,48 +60,24 @@
                                                                     <h5
                                                                         class="card-title text-uppercase text-muted mb-0">
 
-                                                                        Events</h5>
+                                                                        Posts</h5>
                                                                     <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
+                                                                        class="h2 font-weight-bold mb-0">{{$posts}}</span>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/2558/2558944.png"
+                                                                        src="https://cdn-icons-png.flaticon.com/256/5978/5978105.png"
                                                                         alt="">
                                                                 </div>
                                                             </div>
                                                             <p class="mt-3 mb-0 text-muted text-sm">
 
-                                                                <span class="text-nowrap">Since website launch</span>
+                                                                <span class="text-nowrap">Total Number Of Posts</span>
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-                                                                        Tickets
-                                                                    </h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/470/470835.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
 
-                                                                <span class="text-nowrap">Since website launch</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="col-xl-3 col-lg-6">
                                                     <div class="card card-stats mb-4 mb-xl-4">
                                                         <div class="card-body">
@@ -111,7 +87,7 @@
                                                                         class="card-title text-uppercase text-muted mb-0">
                                                                         Categories</h5>
                                                                     <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
+                                                                        class="h2 font-weight-bold mb-0">{{$categories}}</span>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <img style="width: 50px"
@@ -121,7 +97,31 @@
                                                             </div>
                                                             <p class="mt-3 mb-0 text-muted text-sm">
 
-                                                                <span class="text-nowrap">Since website launch</span>
+                                                                <span class="text-nowrap">Number of the catgeories</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-lg-6">
+                                                    <div class="card card-stats mb-4 mb-xl-4">
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <h5
+                                                                        class="card-title text-uppercase text-muted mb-0">
+                                                                        SubCates</h5>
+                                                                    <span
+                                                                        class="h2 font-weight-bold mb-0">{{$subcategories}}</span>
+                                                                </div>
+                                                                <div class="col-auto">
+                                                                    <img style="width: 50px"
+                                                                        src="https://cdn-icons-png.flaticon.com/256/15525/15525928.png"
+                                                                        alt="">
+                                                                </div>
+                                                            </div>
+                                                            <p class="mt-3 mb-0 text-muted text-sm">
+
+                                                                <span class="text-nowrap">Number of SubCategories</span>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -135,7 +135,7 @@
                                                                         class="card-title text-uppercase text-muted mb-0">
                                                                         Banned Users</h5>
                                                                     <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
+                                                                        class="h2 font-weight-bold mb-0">{{$banned_users}}</span>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <img style="width: 50px"
@@ -145,7 +145,7 @@
                                                             </div>
                                                             <p class="mt-3 mb-0 text-muted text-sm">
 
-                                                                <span class="text-nowrap">Since website launch</span>
+                                                                <span class="text-nowrap">Restrict from chat and post</span>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -157,19 +157,19 @@
                                                                 <div class="col">
                                                                     <h5
                                                                         class="card-title text-uppercase text-muted mb-0">
-                                                                        Public</h5>
+                                                                        Published</h5>
                                                                     <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
+                                                                        class="h2 font-weight-bold mb-0">{{$published}}</span>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/6360/6360268.png"
+                                                                        src="https://cdn-icons-png.flaticon.com/256/8288/8288613.png"
                                                                         alt="">
                                                                 </div>
                                                             </div>
                                                             <p class="mt-3 mb-0 text-muted text-sm">
 
-                                                                <span class="text-nowrap">Number Of Public Events</span>
+                                                                <span class="text-nowrap">Rate % Of Published Posts</span>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -181,20 +181,19 @@
                                                                 <div class="col">
                                                                     <h5
                                                                         class="card-title text-uppercase text-muted mb-0">
-                                                                        Private</h5>
+                                                                        Image/Post</h5>
                                                                     <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
+                                                                        class="h2 font-weight-bold mb-0">{{$rate}}</span>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/4413/4413865.png"
+                                                                        src="https://cdn-icons-png.flaticon.com/256/2659/2659360.png"
                                                                         alt="">
                                                                 </div>
                                                             </div>
                                                             <p class="mt-3 mb-0 text-muted text-sm">
 
-                                                                <span class="text-nowrap">Number Of Private
-                                                                    Events</span>
+                                                                <span class="text-nowrap">Images Number Per Post</span>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -206,261 +205,30 @@
                                                                 <div class="col">
                                                                     <h5
                                                                         class="card-title text-uppercase text-muted mb-0">
-                                                                        Rate %</h5>
+                                                                        Post/User</h5>
                                                                     <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
+                                                                        class="h2 font-weight-bold mb-0">{{$postperuser}}</span>
                                                                 </div>
                                                                 <div class="col-auto">
                                                                     <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/190/190411.png"
+                                                                        src="https://cdn-icons-png.flaticon.com/256/1995/1995562.png"
                                                                         alt="">
                                                                 </div>
                                                             </div>
                                                             <p class="mt-3 mb-0 text-muted text-sm">
 
-                                                                <span class="text-nowrap">Acceptance of Requests
-                                                                    Rate</span>
+                                                                <span class="text-nowrap">Posts Number Per User</span>
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-                                                                        Launch %</h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/1067/1067357.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
 
-                                                                <span class="text-nowrap">Rate of Launched
-                                                                    Events</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+                                                
                                             </div>
 
                                         </div>
-                                        {{-- Organizer Stats --}}
-                                    {{-- @else
-                                        <div class="header-body">
-                                            <div class="row">
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-                                                                        Users</h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/476/476863.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
-
-                                                                <span class="text-nowrap">users attend your
-                                                                    events</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-
-                                                                        Events </h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/2558/2558944.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
-
-                                                                <span class="text-nowrap">Personal Event Number</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-                                                                        Buyed Tickets
-                                                                    </h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/470/470835.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
-
-                                                                <span class="text-nowrap">Numbers of selled
-                                                                    Tickets</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-                                                                        Request</h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/718/718970.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
-
-                                                                <span class="text-nowrap">Number Of Requests sent to
-                                                                    you</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-                                                                        Public</h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/6360/6360268.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
-
-                                                                <span class="text-nowrap">Number Of Public
-                                                                    Events</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-                                                                        Private</h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/4413/4413865.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
-
-                                                                <span class="text-nowrap">Number Of Private
-                                                                    Events</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-                                                                        Rate %</h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/190/190411.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
-
-                                                                <span class="text-nowrap">Acceptance of Requests
-                                                                    Rate</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-3 col-lg-6">
-                                                    <div class="card card-stats mb-4 mb-xl-4">
-                                                        <div class="card-body">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <h5
-                                                                        class="card-title text-uppercase text-muted mb-0">
-                                                                        Launch Rate %</h5>
-                                                                    <span
-                                                                        class="h2 font-weight-bold mb-0"></span>
-                                                                </div>
-                                                                <div class="col-auto">
-                                                                    <img style="width: 50px"
-                                                                        src="https://cdn-icons-png.flaticon.com/256/1067/1067357.png"
-                                                                        alt="">
-                                                                </div>
-                                                            </div>
-                                                            <p class="mt-3 mb-0 text-muted text-sm">
-
-                                                                <span class="text-nowrap">Rate of Launched
-                                                                    Events</span>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    @endif --}}
+                                       
 
                                 </div>
                             </div>

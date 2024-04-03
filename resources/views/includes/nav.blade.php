@@ -4,16 +4,17 @@
             <!-- Navbar -->
             <nav
                 class="absolute top-0 left-0 right-0 z-30 flex flex-wrap items-center px-4 py-2 m-6 mb-0 shadow-sm rounded-xl bg-white/80 backdrop-blur-2xl backdrop-saturate-200 lg:flex-nowrap lg:justify-start">
-                <div class="flex items-center justify-between w-full p-0 px-6 mx-auto flex-wrap-inherit">
+                <div  class="flex items-center justify-between w-full p-0 px-6 mx-auto flex-wrap-inherit">
                     <a class="flex items-center"
                         href="{{route('home')}}"
                         >
-                        <img class="w-12" src="https://i.ibb.co/f4wFF1n/logo2.png " alt="" />
-                        <span
-                            class="text-md mr-4 ml-4 whitespace-nowrap font-bold text-slate-700 lg:ml-0">LetsTrade</span>
+                        <img id="Treasure-Trade-image" class="w-12" src="https://i.ibb.co/f4wFF1n/logo2.png " alt="" />
+                        <span id="Treasure-Trade"
+                            class="text-md mr-4 ml-4 whitespace-nowrap font-bold text-slate-700 lg:ml-0">Treasure-Trade</span>
                     </a>
-                    <button navbar-trigger
-                        class="px-3 py-1 ml-2 leading-none transition-all ease-in-out bg-transparent border border-transparent border-solid rounded-lg shadow-none cursor-pointer text-lg lg:hidden"
+                    <button  navbar-trigger
+                    
+                        class=" py-1 ml-2 leading-none transition-all ease-in-out bg-transparent border border-transparent border-solid rounded-lg shadow-none cursor-pointer text-lg lg:hidden"
                         type="button" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="inline-block mt-2 align-middle bg-center bg-no-repeat bg-cover w-6 h-6 bg-none">
                             <span bar1

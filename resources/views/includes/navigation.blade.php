@@ -3,17 +3,18 @@
 
         <nav
             class="w-3/4  top-0 left-0 right-0 z-30 flex flex-wrap items-center px-4 py-2 m-6 mb-0 shadow-md rounded-xl bg-white/80 backdrop-blur-2xl backdrop-saturate-200 lg:flex-nowrap lg:justify-start">
-            <div class="flex items-center justify-between w-full p-0 px-6 mx-auto flex-wrap-inherit">
+            <div d="Treasure-Trade-container" class="flex items-center justify-between w-full p-0 px-6 mx-auto flex-wrap-inherit">
                 <a class="flex items-center" href="{{ route('home') }}">
-                    <img class="w-12" src="https://i.ibb.co/f4wFF1n/logo2.png " alt="" />
-                    <span class="text-md mr-4 ml-4 whitespace-nowrap font-bold text-slate-700 lg:ml-0">LetsTrade</span>
+                    <img id="Treasure-Trade-image" class="w-12" src="https://i.ibb.co/f4wFF1n/logo2.png " alt="" />
+                    <span id="Treasure-Trade" class="text-md mr-4 ml-4 whitespace-nowrap font-bold text-slate-700 lg:ml-0">Treasure-Trade</span>
                 </a>
                 <button navbar-trigger
-                    class="px-3 py-1 ml-2 leading-none transition-all ease-in-out bg-transparent border border-transparent border-solid rounded-lg shadow-none cursor-pointer text-lg lg:hidden"
+                    class=" py-1 ml-2 leading-none transition-all ease-in-out bg-transparent border border-transparent border-solid rounded-lg shadow-none cursor-pointer text-lg lg:hidden"
                     type="button" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
                     <img class="w-12" src="https://www.svgrepo.com/show/312300/hamburger-menu.svg" alt="">
                 </button>
                 <div navbar-menu
+               
                     class="items-center flex-grow transition-all duration-500 lg-max:overflow-hidden ease lg-max:max-h-0 basis-full lg:flex lg:basis-auto">
                     <ul class="flex flex-col pl-0 mx-auto mb-0 list-none lg:flex-row xl:ml-auto">
                         <li>

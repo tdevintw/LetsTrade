@@ -7,9 +7,6 @@
                 <h1 class="text-3xl font-semibold text-gray-700">Reset Password</h1>
             </div>
 
-            @if (session('status'))
-                <div>{{ session('status') }}</div>
-            @endif
 
             <div class="m-6">
                 <form class="mb-4" method="POST" action="{{ route('password.update') }}">

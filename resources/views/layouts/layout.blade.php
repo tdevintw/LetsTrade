@@ -5,22 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
+    <title>Treasure Trade</title>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/argon-dashboard-tailwind.css?v=1.0.1"') }}">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/css/splide.min.css">
+    <link rel="icon" type="image/x-icon" href="{{asset('storage/images/logo2.png')}}">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        clifford: '#da373d',
-                    }
-                }
-            }
-        }
-    </script>
+
         <style>
             #dropdownAvatar {
                 position: fixed;
@@ -42,17 +35,33 @@
                     padding-left: 16px;
                 }
             }
+            body{
+                background-color:#fff0e5;
+            }
+            @media (max-width: 500px) {
+                #Treasure-Trade{
+                font-size: 15px;
+                margin: 0;
+            }
+            #Treasure-Trade-image{
+                width: 40px;
+            }
+        
+            }
+
+            
+            
         </style>
 </head>
 
 <body>
     @once
-    @include('navigation')        
+    @include('includes.navigation')        
     @endonce
-
     @yield('content')
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    @once
+    @include('includes.footer')        
+    @endonce
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -74,7 +83,13 @@
     </script>
         <script src="{{ asset('assets/js/argon-dashboard-tailwind.js?v=1.0.1') }}" async></script>
         <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}" async></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide/dist/js/splide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            new Splide('#splide').mount();
+        });
+        
+    </script>
 </body>
 
 </html>

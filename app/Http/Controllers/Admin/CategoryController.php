@@ -6,7 +6,7 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Repositories\CategoryRepository;
+use App\Repositories\CategoryRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
@@ -17,7 +17,7 @@ class CategoryController extends Controller
 
     protected $CategoryRepository;
     
-    public function __construct(CategoryRepository $CategoryRepository)
+    public function __construct(CategoryRepositoryInterface $CategoryRepository)
     {
         $this->CategoryRepository = $CategoryRepository;
     }

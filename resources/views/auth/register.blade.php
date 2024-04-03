@@ -5,16 +5,15 @@
     @endonce
     <main class="mt-0 transition-all duration-200 ease-in-out pb-5">
         <section class="min-h-screen">
-            <div
-                class="bg-top relative flex items-start pt-12 pb-56 m-4 overflow-hidden bg-cover min-h-50-screen rounded-xl bg-[url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg')]">
+            <div style="background-image: url('https://i.ibb.co/SJzXw1r/login.jpg');background-size: cover;"
+                class="bg-top relative flex items-start pt-12 pb-56 m-4 overflow-hidden bg-cover min-h-50-screen rounded-xl ">
                 <span
                     class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-zinc-800 to-zinc-700 opacity-60"></span>
                 <div class="container z-10">
                     <div class="flex flex-wrap justify-center -mx-3">
                         <div class="w-full max-w-full px-3 mx-auto mt-0 text-center lg:flex-0 shrink-0 lg:w-5/12">
                             <h1 class="mt-12 mb-2 text-white">Welcome!</h1>
-                            <p class="text-white">Use these awesome forms to login or create new account in your project for
-                                free.</p>
+                            <p class="text-white">A captivating journey awaits you, filled with thrilling adventures.</p>
                         </div>
                     </div>
                 </div>

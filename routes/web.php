@@ -9,11 +9,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 
 //open for all
+
 Route::get('getCities/{country}', [ProfileController::class,'getCities'])->name('getCities');
+Route::get('getSubcategories/{category}', [PostController::class,'getSubcategories'])->name('getSubcategories');
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/post/{post}', [HomeController::class, 'show'])->name('post.show');
+
 Route::get('/logout', function(){
   return   view('errors.404');
 } );
@@ -39,7 +45,10 @@ Route::get('/google/callback', [App\Http\Controllers\Auth\GoogleLoginController:
 
 Route::middleware('auth')->group(function(){
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    Route::delete('/image/{image}', [PostController::class, 'deleteImage'])->name('deleteImage');
     Route::resource('profile',ProfileController::class);
+    Route::resource('posts',PostController::class);
+
 });
 
 
@@ -47,11 +56,15 @@ Route::middleware('auth')->group(function(){
 
 Route::middleware('auth', 'CheckRole:admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->name('dashboard.posts');
     Route::resource('categories', CategoryController::class);
     Route::resource('subcategories', SubCategoryController::class);
     Route::resource('users', UserController::class);
     Route::post('users/access', [UserController::class, 'access'])->name('users.access');
     Route::post('users/role', [UserController::class, 'role'])->name('users.role');
+    Route::put('posts/access/{post}', [DashboardController::class, 'access'])->name('posts.access');
+
+    
 
 });
 

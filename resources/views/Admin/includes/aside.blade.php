@@ -17,7 +17,7 @@
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
 
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('dashboard.index')}}">
                     <img style="width: 20px" src="https://cdn-icons-png.flaticon.com/256/25/25694.png">
                     <span class="ml-3 item-text">Dashboard</span>
                 </a>
@@ -69,7 +69,7 @@
                 </a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="trade">
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{route('dashboard.posts')}}">
                             <img style="width: 20px" src="https://cdn-icons-png.flaticon.com/256/2920/2920015.png">
                             <span class="ml-3 item-text">Posts</span>
                         </a>
@@ -85,7 +85,7 @@
         </ul>
         <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item w-100">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('profile.index')}}">
                     <img style="width: 20px" src="https://cdn-icons-png.flaticon.com/256/456/456283.png">
                     <span class="ml-3 item-text">My Profile</span>
                 </a>
