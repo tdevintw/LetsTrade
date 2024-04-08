@@ -4,65 +4,156 @@
     <section>
         <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
             <div class="mr-auto place-self-center lg:col-span-6">
-                <h1 class="max-w-xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-4xl xl:text-5xl dark:text-white">
+                <h1
+                    class="max-w-xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-4xl xl:text-5xl dark:text-white">
                     Welcome to Treasure Trade: Where Stories Meet Commodities</h1>
                 <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Discover
-                    the art of trading items and goods. Join us and embark on a journey where every exchange is a story waiting to
+                    the art of trading items and goods. Join us and embark on a journey where every exchange is a story
+                    waiting to
                     be told. Explore the possibilities with TradeVerse.</p>
             </div>
-            
+
             <div class="hidden lg:mt-0 lg:col-span-6 lg:flex">
                 <img src="{{ asset('storage/images/hero1.jpg') }}" alt="mockup">
             </div>
         </div>
     </section>
+    
 
+    <div class="flex items-center justify-center">
+        <!-- Modal toggle -->
+        <div class="flex justify-center m-5">
+            <button id="updateProductButton" data-modal-target="updateProductModal" data-modal-toggle="updateProductModal"
+                style="background-color:#ff7f50"
+                class="block text-white  focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                type="button">
+                Filter By
+            </button>
+        </div>
 
-    <div class="flex justify-center">
-
-        <div class="flex items-center justify-center gap-2 border-solid border-2 border-gray-300 rounded-lg w-fit p-4">
-            <form class="max-w-lg mx-auto" id="searchForm"  method="GET">
-                <div class="flex">
-                    <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your
-                        Email</label>
-                    <button id="dropdown-button" data-dropdown-toggle="dropdown"
-                        class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
-                        type="button">All categories <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg></button>
-                    <div class="relative w-full">
-                        <input type="text" name="search" placeholder="Search by title,location..."
-                            class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
-                            required />
-                        <button type="submit"
-                            class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-e-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+        <!-- Main modal -->
+        <div id="updateProductModal" tabindex="-1" aria-hidden="true"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+            <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+                <!-- Modal content -->
+                <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+                    <!-- Modal header -->
+                    <div
+                        class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            Filter Posts
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-toggle="updateProductModal">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
                             </svg>
-                            <span class="sr-only">Search</span>
+                            <span class="sr-only">Close modal</span>
                         </button>
                     </div>
+                    <!-- Modal body -->  
+                    <form action="{{route('discover.filter')}}" method="GET">                
+                        <div class="grid gap-4 mb-4 sm:grid-cols-2">
+                           
+                            <div>
+                                <label for="name"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
+                                <select  name="country_id" id="country_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="Ex. Apple iMac 27">
+                                    <option value="" selected>All</option>
+
+                                    @foreach ($countries as $country)
+                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <label for="brand"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City</label>
+                                <select  name="city_id" id="city_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <option value="">Select Country</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="brand"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                                <select  name="category_id" id="category_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <option value="" selected>All</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <label for="brand"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">SubCategory</label>
+                                <select  name="subcategory_id" id="subcategory_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <option value="">Select Category</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="brand"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Condition</label>
+                                <select  name="condition" id="condition"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                    <option value="" selected>All</option>
+                                    <option value="New">New</option>
+                                    <option value="Like new">Like New</option>
+                                    <option value="Good">Good</option>
+                                    <option value="Fair">Fair</option>
+                                </select>
+                            </div>
+                            <div class="flex justify-center items-center h-full sm:mt-4">
+                                <button  type="submit" class="w-full text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800 focus:outline-none">Filter</button>
+                            </div>
+                        
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="w-72">
+
+
+            <form class="max-w-md mx-auto" action="{{route('discover.search')}}">
+                <label for="default-search"
+                    class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                        </svg>
+                    </div>
+                    <input type="search" id="title" name="title"
+                        class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Search Title,..." required />
+                    <button type="submit" style="background-color:#ff7f50"
+                        class="text-white absolute end-2.5 bottom-2.5 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                 </div>
             </form>
-
-
         </div>
 
     </div>
 
 
     @if ($posts)
-        <div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        <div class="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
             @foreach ($posts as $post)
                 <div class="flex justify-center">
 
 
                     <div class="max-w-xs rounded overflow-hidden shadow-lg w-full">
-                        <a href="{{route('post.show',$post->id)}}">
+                        <a href="{{ route('post.show', $post->id) }}">
                             <div class="relative overflow-hidden cursor-pointer">
 
                                 <img title="More Information"
@@ -142,16 +233,65 @@
                 </div>
             @endforeach
         </div>
+        <div class="flex justify-center gap-2 mb-5">
+            {{ $posts->links() }}
+        </div>
     @endif
-    @if($posts->count()===0)
-        <div class="flex flex-col items-center mt-4">
-            <h1 class="mb-4 text-xs sm:text-sm md:text-md lg:text-xl ">Currently, no items are available for trade. Stay tuned for future opportunities!</h1>
-            <img class="w-1/2 lg:w-96"
-                src="https://i.ibb.co/mtD6mMf/behold-an-empty-treasure-box-lies-before-you-its.jpg"
+    @if ($posts->count() === 0)
+        <div class="flex flex-col items-center mt-4 mb-16">
+            <h1 class="mb-4 text-xs sm:text-sm md:text-md lg:text-xl ">Currently, no items are available for trade. Stay
+                tuned for future opportunities!</h1>
+            <img class="w-1/2 lg:w-96" src="https://i.ibb.co/mtD6mMf/behold-an-empty-treasure-box-lies-before-you-its.jpg"
                 alt="not found">
         </div>
     @endif
-    <div class="flex justify-center gap-2 mb-5">
-        {{ $posts->links() }}
-    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            document.getElementById('updateProductButton').click();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#country_id').change(function() {
+                var countryId = $(this).val();
+
+
+                $.ajax({
+                    url: '/getCities/' + countryId,
+                    type: 'GET',
+                    success: function(response) {
+                        var citySelect = $('#city_id');
+                        citySelect.empty();
+                        $.each(response, function(id, name) {
+                            citySelect.append($('<option></option>').attr('value', id)
+                                .text(name));
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+        <script>
+            $(document).ready(function() {
+                $('#category_id').change(function() {
+    
+                    var categoryId = $(this).val();
+    
+                    // AJAX request
+                    $.ajax({
+                        url: '/getSubcategories/' + categoryId,
+                        type: 'GET',
+                        success: function(response) {
+                            var subcategorySelect = $('#subcategory_id');
+                            subcategorySelect.empty();
+                            $.each(response, function(id, name) {
+                                subcategorySelect.append($('<option></option>').attr(
+                                    'value', id).text(name));
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
 @endsection

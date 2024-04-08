@@ -11,19 +11,21 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FilterController;
+
 
 //open for all
 
 Route::get('getCities/{country}', [ProfileController::class,'getCities'])->name('getCities');
 Route::get('getSubcategories/{category}', [PostController::class,'getSubcategories'])->name('getSubcategories');
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/post/{post}', [HomeController::class, 'show'])->name('post.show');
-
 Route::get('/logout', function(){
   return   view('errors.404');
 } );
-
+Route::get('/discover', [FilterController::class, 'index'])->name('discover.index');
+Route::get('/discover/search', [FilterController::class, 'search'])->name('discover.search');
+Route::get('/discover/filter', [FilterController::class, 'filter'])->name('discover.filter');
 //guest users 
 
 Route::middleware('guest')->group(function () {

@@ -12,4 +12,9 @@ interface SubCategoryRepositoryInterface {
     public function update(object $subcategory,array $data);
 
     public function getSubcategories($category);
+
+    public function count();
+
+    public function pagination($number);
+
 }

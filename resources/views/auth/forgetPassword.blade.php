@@ -22,14 +22,14 @@
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                     <div class="mb-6">
-                        <button type="submit"
-                            class="w-full px-3 py-4 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none duration-100 ease-in-out">Send
+                        <button type="submit" style="background-color:#E6823C"
+                            class="w-full px-3 py-4 text-white rounded-md  focus:outline-none duration-100 ease-in-out">Send
                             reset link</button>
                     </div>
                     <p class="text-sm text-center text-gray-400">
                         Don&#x27;t have an account yet?
                         <a href="{{ route('register') }}"
-                            class="font-semibold text-indigo-500 focus:text-indigo-600 focus:outline-none focus:underline">Sign
+                            class="font-semibold focus:outline-none focus:underline text-gray-800">Sign
                             up</a>.
                     </p>
                 </form>
@@ -42,8 +42,8 @@
                 <a href="{{ route('google.redirect') }}">
                     <div class="flex flex-row gap-2">
 
-                        <button
-                            class="bg-green-500 text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-green-600 duration-100 ease-in-out">
+                        <button style="background-color: #806654;"
+                            class=" text-white w-full p-2 flex flex-row justify-center gap-2 items-center rounded-sm hover:bg-green-600 duration-100 ease-in-out">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 class="w-5" viewBox="0 0 48 48">
                                 <defs>

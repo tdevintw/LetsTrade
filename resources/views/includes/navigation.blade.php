@@ -24,6 +24,13 @@
                                 Home
                             </a>
                         </li>
+                        <li>
+                            <a class="flex items-center px-4 py-2 mr-2 font-normal transition-all ease-in-out lg-max:opacity-0 duration-250 text-sm text-slate-700 lg:px-2"
+                                aria-current="page" href="{{ route('discover.index') }}">
+                                <img style="width:15px;margin-right:5px" src="https://cdn-icons-png.flaticon.com/256/114/114369.png" alt="">
+                                Discover
+                            </a>
+                        </li>
                         @guest
 
 

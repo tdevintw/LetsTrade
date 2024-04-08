@@ -32,4 +32,14 @@ class SubCategoryRepository implements SubCategoryRepositoryInterface
   {
     return SubCategory::where('category_id', $category)->pluck('name', 'id');
   }
+
+  public function count(){
+    return SubCategory::count();
+  }
+
+  public function pagination($number){
+    return SubCategory::paginate($number);
+}
+
+
 }

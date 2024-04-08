@@ -19,4 +19,13 @@ class CategoryRepository implements CategoryRepositoryInterface {
     {
         return $category->delete();
     }
+
+    public function count(){
+        return Category::count();
+    }
+
+    public function pagination($number){
+        return Category::paginate($number);
+    }
+
 }

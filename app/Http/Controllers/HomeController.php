@@ -3,24 +3,51 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\CityRepositoryInterface;
+use App\Repositories\CountryRepositoryInterface;
+use App\Repositories\PostRepositoryInterface;
+use App\Repositories\SubCategoryRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+
+    protected $PostRepository;
+    protected $CountryRepository;
+    protected $CityRepository;
+    protected $CategoryRepository;
+    protected $SubCategoryRepository;
+
+    public function __construct(PostRepositoryInterface $PostRepository, CityRepositoryInterface $CityRepository , CountryRepositoryInterface $CountryRepository , SubCategoryRepositoryInterface $SubCategoryRepository , CategoryRepositoryInterface $CategoryRepository )
+    {
+        $this->PostRepository = $PostRepository;
+        $this->CountryRepository = $CountryRepository;
+        $this->CityRepository = $CityRepository;
+        $this->CategoryRepository = $CategoryRepository;
+        $this->SubCategoryRepository = $SubCategoryRepository;
+    }
+
     public function index()
     {
+
         $user = Auth::user();
-        $posts = Post::paginate(20);
+        $posts = $this->PostRepository->pagination('20');
         $images = [];
         if ($posts) {
             foreach ($posts as $post) :
-                $images[$post->title] = $post->images->first()->image;
+                $images[$post->title] = $this->PostRepository->firstImage($post);
             endforeach;
         }
+        $countries = $this->CountryRepository->get();
+        $cities = $this->CityRepository->get();
+        $categories = $this->CategoryRepository->get();
+        $subcategories = $this->SubCategoryRepository->get();
 
-        return view('home', compact('user', 'posts', 'images'));
+
+        return view('home', compact('user', 'posts', 'images','countries','cities','categories','subcategories'));
     }
 
     public function show(Post $post)
@@ -38,4 +65,6 @@ class HomeController extends Controller
         }
         return view('post', compact('post', 'user', 'images', 'date'));
     }
+
+
 }

@@ -10,23 +10,46 @@ use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\SubCategory;
+use App\Repositories\PostRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
+use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\SubCategoryRepositoryInterface;
+use App\Repositories\ImageRepositoryInterface;
 use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
+    protected $PostRepository;
+    protected $UserRepository;
+    protected $CategoryRepository;
+    protected $SubCategoryRepository;
+    protected $ImageRepository;
+
+
+    public function __construct(PostRepositoryInterface $PostRepository,UserRepositoryInterface $UserRepository,CategoryRepositoryInterface $CategoryRepository,SubCategoryRepositoryInterface $SubCategoryRepository,ImageRepositoryInterface $ImageRepository)
+    {
+        $this->PostRepository = $PostRepository;
+        $this->UserRepository = $UserRepository;
+        $this->CategoryRepository = $CategoryRepository;
+        $this->SubCategoryRepository = $SubCategoryRepository;
+        $this->ImageRepository = $ImageRepository;
+    }
+
     public function index()
     {
         $user =  Auth::user();
-        $users = User::count();
-        $posts = Post::count();
-        $banned_users = User::where('access','banned')->count();
-        $categories = Category::count();
-        $subcategories = SubCategory::count();    
+        $users = $this->UserRepository->count();
+        $posts = $this->PostRepository->count();
+        $banned_users = $this->UserRepository->calculate('access','banned');
+        $categories = $this->CategoryRepository->count();
+        $subcategories =  $this->SubCategoryRepository->count();    
         if($posts !=0){
-        $rate = Image::count();
+        $rate = $this->ImageRepository->count();
         $rate = $rate/$posts;
-        $published = Post::where('access','authorized')->count();
+        $published = $this->PostRepository->calculate('access','authorized');
+
         $published = ($published/$posts)*100 ."%";
+
         }else{
             $rate = "No Data";
             $published = "No Data";
@@ -43,7 +66,7 @@ class DashboardController extends Controller
     public function posts()
     {
         $user = Auth::user();
-        $posts = Post::get();
+        $posts = $this->PostRepository->pagination('10');
 
         $createdAt = [];
         $updatedAt = [];
@@ -82,12 +105,11 @@ class DashboardController extends Controller
 
     public function access(Post $post)
     {
-        if ($post->access === 'authorized') {
-            $post->access = 'unauthorized';
+        if ($this->PostRepository->find($post,'access') === 'authorized') {
+            $this->PostRepository->put($post,'access','unauthorized');
         } else {
-            $post->access = 'authorized';
+            $this->PostRepository->put($post,'access','authorized');
         }
-        $post->save();
         return redirect()->route('dashboard.posts');
     }
 }

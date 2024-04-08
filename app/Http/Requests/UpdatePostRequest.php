@@ -27,9 +27,9 @@ class UpdatePostRequest extends FormRequest
             'condition'=>'required',
             'subcategory_id'=> 'required',
             'note'=>'required',
-            'location'=>'required',
+            'city_id'=>'required',
             'images' => 'array',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ];
     }
 }

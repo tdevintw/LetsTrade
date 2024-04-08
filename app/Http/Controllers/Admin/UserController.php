@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->UserRepository->get();
+        $users = $this->UserRepository->pagination('10');
         $user = Auth::user();
         return view('Admin.users.index',compact('users','user'));
     }
@@ -85,13 +85,13 @@ class UserController extends Controller
     }
 
     public function access(Request $request){
-        $user =  User::find($request->id);
-        if($user->access == 'authorized'){
-            $user->access = 'banned';
-            $user->save();
+
+        $user = $this->UserRepository->createObject($request->id);
+
+        if($this->UserRepository->find($user,'access') === 'authorized'){
+            $this->UserRepository->put($user , 'access','banned');
         }else{
-            $user->access = 'authorized';
-            $user->save();
+            $this->UserRepository->put($user , 'access','authorized');
         }
         
         return redirect()->route('users.index');
@@ -99,12 +99,10 @@ class UserController extends Controller
 
     public function role(Request $request){
         $user =  User::find($request->id);
-        if($user->role == 'user'){
-            $user->role = 'admin';
-            $user->save();
+        if($this->UserRepository->find($user,'role') === 'user'){
+            $this->UserRepository->put($user , 'role' ,'admin');
         }else{
-            $user->role = 'user';
-            $user->save();
+            $this->UserRepository->put($user , 'role' ,'user');
         }
         
         return redirect()->route('users.index');

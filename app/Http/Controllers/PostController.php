@@ -11,7 +11,12 @@ use App\Models\Image;
 use App\Models\Post;
 use App\Models\SubCategory;
 use App\Repositories\CategoryRepositoryInterface;
+use App\Repositories\CityRepositoryInterface;
+use App\Repositories\CountryRepositoryInterface;
+use App\Repositories\ImageRepositoryInterface;
+use App\Repositories\PostRepositoryInterface;
 use App\Repositories\SubCategoryRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -20,11 +25,21 @@ class PostController extends Controller
 {
     protected $SubCategoryRepository;
     protected $CategoryRepository;
+    protected $PostRepository;
+    protected $CountryRepository;
+    protected $CityRepository;
+    protected $ImageRepository;
+    protected $UserRepository;
 
-    public function __construct(SubCategoryRepositoryInterface $SubCategoryRepository, CategoryRepositoryInterface $CategoryRepository)
+    public function __construct(SubCategoryRepositoryInterface $SubCategoryRepository, CategoryRepositoryInterface $CategoryRepository,PostRepositoryInterface $PostRepository, CountryRepositoryInterface $CountryRepository, CityRepositoryInterface $CityRepository,ImageRepositoryInterface $ImageRepository, UserRepositoryInterface $UserRepository)
     {
         $this->SubCategoryRepository = $SubCategoryRepository;
         $this->CategoryRepository = $CategoryRepository;
+        $this->PostRepository = $PostRepository;
+        $this->CountryRepository = $CountryRepository;
+        $this->CityRepository = $CityRepository;
+        $this->ImageRepository = $ImageRepository;
+        $this->UserRepository = $UserRepository;
     }
 
     public function index()
@@ -36,7 +51,7 @@ class PostController extends Controller
         $images = [];
         if ($posts) {
             foreach ($posts as $post) :
-                $images[$post->title] = $post->images->first()->image;
+                $images[$post->title] = $this->PostRepository->firstImage($post);
             endforeach;
         }
 
@@ -48,8 +63,8 @@ class PostController extends Controller
         $user = Auth::user();
         $subcategories = $this->SubCategoryRepository->get();
         $categories = $this->CategoryRepository->get();
-        $cities = City::get();
-        $countries = Country::get();
+        $cities = $this->CityRepository->get();
+        $countries = $this->CountryRepository->get();
         return view('profile.post.create', compact('user', 'subcategories', 'categories','countries','cities'));
     }
 
@@ -59,26 +74,13 @@ class PostController extends Controller
         $user = Auth::user();
         $data = $request->validated();
 
-        $post = Post::create([
-            'title' => $data['title'],
-            'location' => $data['city_id'],
-            'description' => $data['description'],
-            'note' => $data['note'],
-            'user_id' => $user['id'],
-            'condition' => $data['condition'],
-            'subcategory_id' => $data['subcategory_id'],
-        ]);
-        $post->save();
-
+       $post =  $this->PostRepository->create($data , $user->id);
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $imagefile) {
                 $fileName = 'images/posts/' . $imagefile->getClientOriginalName() . time() . '.' . $imagefile->extension();
                 $imagefile->storeAs('public', $fileName);
 
-                Image::create([
-                    'post_id' => $post->id,
-                    'image' => $fileName
-                ]);
+                $this->ImageRepository->create($post->id,$fileName);
             }
         }
 
@@ -97,36 +99,25 @@ class PostController extends Controller
             return  view('errors.404');
         }
 
-        $categories = Category::get();
-        $subcategories = SubCategory::get();
-
-        return view('profile.post.edit', compact('post', 'categories', 'subcategories','user'));
+        $categories = $this->CategoryRepository->get();
+        $subcategories = $this->SubCategoryRepository->get();
+        $countries = $this->CountryRepository->get();
+        $cities = $this->CityRepository->get();
+        return view('profile.post.edit', compact('post', 'categories', 'subcategories','user','countries','cities'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
     {
 
         $data = $request->validated();
-
-        $post->update([
-            'title' => $data['title'],
-            'location' => $data['location'],
-            'description' => $data['description'],
-            'note' => $data['note'],
-            'condition' => $data['condition'],
-            'subcategory_id' => $data['subcategory_id'],
-        ]);
-        $post->save();
+        $this->PostRepository->update($data,$post);
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $imagefile) {
                 $fileName = 'images/posts/' . $imagefile->getClientOriginalName() . time() . '.' . $imagefile->extension();
                 $imagefile->storeAs('public', $fileName);
 
-                Image::create([
-                    'post_id' => $post->id,
-                    'image' => $fileName
-                ]);
+                $this->ImageRepository->create($post->id,$fileName);
             }
         }
 
@@ -143,8 +134,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $user = Auth::user();
-        $post->delete();
-        if ($user->role === 'user') {
+        $this->PostRepository->destroy($post);
+        if($this->UserRepository->find($user , 'role') === 'user') {
             return redirect()->route('posts.index');
         } else {
             return redirect()->route('dashboard.posts');
@@ -155,8 +146,8 @@ class PostController extends Controller
     public function deleteImage(Image $image)
     {
         $id = $image->post_id;
-        $post = Post::find($id);
-        $image->delete();
+        $post = $this->PostRepository->findObject($id);
+        $this->ImageRepository->destroy($image);
         return redirect()->route('posts.edit', $post);
     }
 

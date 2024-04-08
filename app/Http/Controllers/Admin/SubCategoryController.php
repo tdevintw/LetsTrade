@@ -26,7 +26,8 @@ class SubCategoryController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $subcategories =  SubCategory::paginate(10);
+        
+        $subcategories =  $this->SubCategoryRepository->pagination('10');
         return view('Admin.subcategories.index',compact('subcategories','user'));
     }
 

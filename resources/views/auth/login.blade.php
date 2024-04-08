@@ -45,8 +45,8 @@
                                             <a href="{{ route('password.request') }}" class="underline text-sm">Forgot Password ?</a>
                                         </div>
                                         <div class="text-center">
-                                            <button type="submit"
-                                                class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all bg-blue-500 border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">
+                                            <button type="submit" style="background-color:#ff7f50 "
+                                                class="inline-block w-full px-16 py-3.5 mt-6 mb-0 font-bold leading-normal text-center text-white align-middle transition-all border-0 rounded-lg cursor-pointer hover:-translate-y-px active:opacity-85 hover:shadow-xs text-sm ease-in tracking-tight-rem shadow-md bg-150 bg-x-25">
                                                 Sign in
                                             </button>
                                         </div>
@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="flex flex-wrap  mx-3 sm:px-6  justify-center mt-4 ">
                                     <div class="w-full ">
-                                        <a class=" flex justify-center w-full px-5 py-2.5 mb-4 font-bold text-center text-gray-200 uppercase align-middle transition-all bg-transparent border border-gray-500 border-solid rounded-lg shadow-none cursor-pointer hover:-translate-y-px leading-pro text-xs ease-in tracking-tight-rem bg-150 bg-x-25 hover:bg-transparent hover:opacity-75"
+                                        <a class=" flex justify-center w-full px-5 py-2.5 mb-4 "
                                             href="{{route('google.redirect')}}">
                                             <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1"
                                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -90,8 +90,8 @@
                                     class="border-black/12.5 rounded-b-2xl border-t-0 border-solid p-6 text-center pt-0 px-1 sm:px-6">
                                     <p class="mx-auto mb-6 leading-normal text-sm">
                                         Don't have an account?
-                                        <a href="{{ route('register') }}"
-                                            class="font-semibold text-transparent bg-clip-text bg-gradient-to-tl from-blue-500 to-violet-500">Sign
+                                        <a href="{{ route('register') }}" style="background-color: #ff7f50"
+                                            class="font-semibold text-transparent bg-clip-text">Sign
                                             up</a>
                                     </p>
                                 </div>

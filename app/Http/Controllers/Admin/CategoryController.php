@@ -26,7 +26,7 @@ class CategoryController extends Controller
     {
 
         $user = Auth::user();
-        $categories = $this->CategoryRepository->get();
+        $categories = $this->CategoryRepository->pagination('10');
         return view('Admin.categories.index',compact('categories','user'));
     }
 

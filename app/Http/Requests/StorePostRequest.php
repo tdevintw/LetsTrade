@@ -29,7 +29,7 @@ class StorePostRequest extends FormRequest
             'note'=>'required',
             'city_id'=>'required',
             'images' => 'required|array',
-            'images.*' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'images.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
         ];
     }
 

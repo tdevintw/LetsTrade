@@ -8,5 +8,7 @@ interface CategoryRepositoryInterface{
     public function create(array $data);
     public function update(array $data,object $category);
     public function destroy(object $category);
-    
+    public function count();
+    public function pagination($number);
+
 }

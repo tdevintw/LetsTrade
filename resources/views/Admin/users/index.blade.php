@@ -32,7 +32,7 @@
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody>                                               
                                                 @foreach ($users as $user)
                                                     <tr>
                                                         <td>{{ $user->id }}</td>
@@ -104,6 +104,7 @@
 
                                             </tbody>
                                         </table>
+                                        {{ $users->links('vendor.pagination.bootstrap-5') }}
                                         @if (count($users) == 0)
                                             <h3 style="text-align: center">There is no records for the moment</h3>
                                         @endif

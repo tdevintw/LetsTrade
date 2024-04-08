@@ -42,7 +42,7 @@
                                                         <td>{{ $post->id }}</td>
                                                         <td>{{ $post->title }}</td>
                                                         <td>{{ $post->description }}</td>
-                                                        <td>{{ $post->location }}</td>
+                                                        <td>{{ $post->city->country->name }}-{{ $post->city->name }}</td>
                                                         <td>{{ $post->subcategory->category->name }}</td>
                                                         <td>{{ $post->subcategory->name }}</td>
                                                         <td>{{ $post->note }}</td>
@@ -83,9 +83,9 @@
                                                         </td>
                                                     </tr>
                                                 @endforeach
-
                                             </tbody>
                                         </table>
+                                        {{ $posts->links('vendor.pagination.bootstrap-5') }}
                                         @if (count($posts)==0)
                                         <h3 style="text-align: center">There is no records for the moment</h3>    
                                         @endif
