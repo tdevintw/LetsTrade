@@ -16,8 +16,8 @@ use App\Repositories\CountryRepositoryInterface;
 use App\Repositories\CountryRepository;
 use App\Repositories\CityRepositoryInterface;
 use App\Repositories\CityRepository;
-
-
+use App\Repositories\RequestRepositoryInterface;
+use App\Repositories\RequestRepository;
 
 
 use Illuminate\Support\ServiceProvider;
@@ -36,6 +36,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PostRepositoryInterface::class , PostRepository::class);
         $this->app->bind(CountryRepositoryInterface::class , CountryRepository::class);
         $this->app->bind(CityRepositoryInterface::class , CityRepository::class);
+        $this->app->bind(RequestRepositoryInterface::class , RequestRepository::class);
 
     }
 

@@ -22,7 +22,25 @@ class UserController extends Controller
     {
         $users = $this->UserRepository->pagination('10');
         $user = Auth::user();
-        return view('Admin.users.index',compact('users','user'));
+
+        $createdAt = [];
+        $updatedAt = [];
+
+        foreach ($users as $user) :
+
+            $date =  $user->created_at->diffForHumans();          
+
+            $createdAt[$user->id] = $date;
+
+
+            $date =  $user->updated_at->diffForHumans();          
+
+            $updatedAt[$user->id] = $date;
+
+        endforeach;
+
+
+        return view('Admin.users.index',compact('users','user','createdAt','updatedAt'));
     }
 
     /**

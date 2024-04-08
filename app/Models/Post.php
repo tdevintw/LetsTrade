@@ -36,4 +36,9 @@ class Post extends Model
     public function city(){
         return $this->belongsTo(City::class);
     }
+
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
+    }
 }

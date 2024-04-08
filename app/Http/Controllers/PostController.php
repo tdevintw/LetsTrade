@@ -9,6 +9,8 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Image;
 use App\Models\Post;
+use App\Models\PostRequest;
+use App\Models\Request as ModelsRequest;
 use App\Models\SubCategory;
 use App\Repositories\CategoryRepositoryInterface;
 use App\Repositories\CityRepositoryInterface;
@@ -103,7 +105,10 @@ class PostController extends Controller
         $subcategories = $this->SubCategoryRepository->get();
         $countries = $this->CountryRepository->get();
         $cities = $this->CityRepository->get();
-        return view('profile.post.edit', compact('post', 'categories', 'subcategories','user','countries','cities'));
+
+        $requests = PostRequest::where('post_id',$post->id)->get();
+        $sent = isset($requests[0]);
+        return view('profile.post.edit', compact('post', 'categories', 'subcategories','user','countries','cities','sent'));
     }
 
     public function update(UpdatePostRequest $request, Post $post)
@@ -149,6 +154,17 @@ class PostController extends Controller
         $post = $this->PostRepository->findObject($id);
         $this->ImageRepository->destroy($image);
         return redirect()->route('posts.edit', $post);
+    }
+
+    public function status(Post $post){
+        if ($post->status ==='published') {
+            $this->PostRepository->put($post , 'status', 'hidden');
+        } else {
+            $this->PostRepository->put($post , 'status', 'published');
+        }
+
+        return redirect()->route('posts.edit', $post);
+        
     }
 
 

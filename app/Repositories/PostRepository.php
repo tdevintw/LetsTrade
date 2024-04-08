@@ -9,7 +9,9 @@ class PostRepository implements PostRepositoryInterface
 
     public function get()
     {
-        return Post::get();
+        return Post::where('access', 'authorized')
+            ->where('status', 'published')
+            ->get();
     }
 
     public function create(array $data, $user_id)
@@ -67,6 +69,12 @@ class PostRepository implements PostRepositoryInterface
 
     public function pagination($number)
     {
+        return Post::where('access', 'authorized')
+            ->where('status', 'published')
+            ->paginate($number);
+    }
+
+    public function paginationDash($number){
         return Post::paginate($number);
     }
 
@@ -82,7 +90,10 @@ class PostRepository implements PostRepositoryInterface
 
     public function filterLike($column, $value)
     {
-        return Post::where($column, 'Like', '%' . $value . '%')->get();
+        return Post::where($column, 'Like', '%' . $value . '%')
+            ->where('access', 'authorized')
+            ->where('status', 'published')
+            ->get();
     }
 
     public function filterAll($city, $subcategory, $condition)
@@ -90,17 +101,25 @@ class PostRepository implements PostRepositoryInterface
         return Post::where('city_id', $city)
             ->where('subcategory_id', $subcategory)
             ->where('condition', $condition)
+            ->where('access', 'authorized')
+            ->where('status', 'published')
             ->get();
     }
     public function filterDuo($column1, $column2, $value1, $value2)
     {
         return Post::where($column1, $value1)
             ->where($column2, $value2)
+            ->where('access', 'authorized')
+            ->where('status', 'published')
             ->get();
     }
     public function filterSolo($column, $value)
     {
         return Post::where($column, $value)
+            ->where('access', 'authorized')
+            ->where('status', 'published')
             ->get();
     }
+
+
 }

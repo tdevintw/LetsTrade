@@ -26,9 +26,27 @@ class SubCategoryController extends Controller
     public function index()
     {
         $user = Auth::user();
-        
         $subcategories =  $this->SubCategoryRepository->pagination('10');
-        return view('Admin.subcategories.index',compact('subcategories','user'));
+
+        $createdAt = [];
+        $updatedAt = [];
+
+        foreach ($subcategories as $subcategory) :
+
+            $date =  $subcategory->created_at->diffForHumans();          
+
+            $createdAt[$subcategory->id] = $date;
+
+
+            $date =  $subcategory->updated_at->diffForHumans();          
+
+            $updatedAt[$subcategory->id] = $date;
+
+        endforeach;
+
+
+
+        return view('Admin.subcategories.index',compact('subcategories','user','createdAt','updatedAt'));
     }
 
     /**

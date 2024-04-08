@@ -26,7 +26,8 @@
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Category</th>
-                                                    <th>Created_at</th>
+                                                    <th>Created</th>
+                                                    <th>Updated</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -35,7 +36,8 @@
                                                     <tr>
                                                         <td>{{ $category->id }}</td>
                                                         <td>{{ $category->name }}</td>
-                                                        <td>{{ $category->created_at }}</td>
+                                                        <td>{{ $createdAt[$category->id] }}</td>
+                                                        <td>{{ $updatedAt[$category->id] }}</td>
                                                         <td>
                                                             <button type="button" class="btn btn-success"
                                                                 data-toggle="dropdown">Actions</button>

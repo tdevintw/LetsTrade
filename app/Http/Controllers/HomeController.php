@@ -53,16 +53,8 @@ class HomeController extends Controller
     public function show(Post $post)
     {
         $user = Auth::user();
-        $images = $post->images;
-        $originalDate = Carbon::parse($post->created_at);
-
-        $timeDifference = $originalDate->diffInSeconds();
-
-        if ($timeDifference < 86400) {
-            $date =  $originalDate->diffForHumans();
-        } else {
-            $date =  $originalDate;
-        }
+        $images = $post->images;       
+        $date =  $post->created_at->diffForHumans();          
         return view('post', compact('post', 'user', 'images', 'date'));
     }
 

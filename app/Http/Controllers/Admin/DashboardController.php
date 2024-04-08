@@ -46,16 +46,17 @@ class DashboardController extends Controller
         if($posts !=0){
         $rate = $this->ImageRepository->count();
         $rate = $rate/$posts;
+        $rate = number_format($rate, 1);
         $published = $this->PostRepository->calculate('access','authorized');
-
-        $published = ($published/$posts)*100 ."%";
-
+        $published = ($published/$posts)*100 ;    
+        $published = number_format($published, 1) ."%";    
         }else{
             $rate = "No Data";
             $published = "No Data";
         }
         if($users != 0){ 
             $postperuser = $posts / $users;
+            $postperuser = number_format($postperuser, 1);
         }else{
             $postperuser = "No Data";
         }
@@ -66,7 +67,7 @@ class DashboardController extends Controller
     public function posts()
     {
         $user = Auth::user();
-        $posts = $this->PostRepository->pagination('10');
+        $posts = $this->PostRepository->paginationDash('10');
 
         $createdAt = [];
         $updatedAt = [];
@@ -77,11 +78,7 @@ class DashboardController extends Controller
 
             $timeDifference = $originalDate->diffInSeconds();
 
-            if ($timeDifference < 86400) {
-                $date =  $originalDate->diffForHumans();
-            } else {
-                $date =  $originalDate;
-            }
+            $date =  $post->created_at->diffForHumans();          
 
             $createdAt[$post->id] = $date;
 
@@ -90,11 +87,7 @@ class DashboardController extends Controller
 
             $timeDifference = $originalDate->diffInSeconds();
 
-            if ($timeDifference < 86400) {
-                $date =  $originalDate->diffForHumans();
-            } else {
-                $date =  $originalDate;
-            }
+            $date =  $post->updated_at->diffForHumans();          
 
             $updatedAt[$post->id] = $date;
 

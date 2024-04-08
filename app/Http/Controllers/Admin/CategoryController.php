@@ -27,7 +27,26 @@ class CategoryController extends Controller
 
         $user = Auth::user();
         $categories = $this->CategoryRepository->pagination('10');
-        return view('Admin.categories.index',compact('categories','user'));
+
+        $createdAt = [];
+        $updatedAt = [];
+
+        foreach ($categories as $category) :
+
+            $date =  $category->created_at->diffForHumans();          
+
+            $createdAt[$category->id] = $date;
+
+
+            $date =  $category->updated_at->diffForHumans();          
+
+            $updatedAt[$category->id] = $date;
+
+        endforeach;
+
+
+
+        return view('Admin.categories.index',compact('categories','user','createdAt','updatedAt'));
     }
 
     /**

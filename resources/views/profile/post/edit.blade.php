@@ -155,20 +155,51 @@
         </nav>
 
         <div class="relative w-full mx-auto mt-60 ">
-
+            @if ($post->access === 'unauthorized')
+                <div class="container mx-auto p-6 flex items-center">
+                    <img class="w-6" src="https://cdn-icons-png.flaticon.com/256/665/665049.png" alt="">
+                    <p class="mb-0 ml-1">This post has been hidden by the administrator. Please submit a request if you
+                        believe there has been a misunderstanding.</p>
+                </div>
+            @endif
             <div id="create-container" class="container mx-auto p-6">
                 <div style="display:flex;justify-content:flex-end;margin-top:1rem;margin-bottom:2rem;">
+                    @if ($post->access === 'unauthorized')
+                        @if ($sent)
+                            <button type="button" class="mr-2"
+                                style="background-color: #F07924  ; color:white;padding:0.5rem 0.8rem 0.5rem 0.8rem;border-radius:0.3rem">Request Sent</button>
+                        @else
+                            <form action="{{ route('posts.submit', $post->id) }}" method="GET" class="mr-2">
+                                <button type="submit"
+                                    style="background-color: #F07924  ; color:white;padding:0.5rem 0.8rem 0.5rem 0.8rem;border-radius:0.3rem">Send
+                                    Request</button>
 
-               
-                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"
-                        style="background-color: red; color:white;padding:0.5rem 0.8rem 0.5rem 0.8rem;border-radius:0.3rem">Delete
-                        Post</button>
+                            </form>
+                        @endif
+                    @endif
+                    <form action="{{ route('posts.status', $post->id) }}" method="POST" class="mr-2">
+                        @csrf
+                        @method('PUT')
+                        @if ($post->status === 'hidden')
+                            <button type="submit"
+                                style="background-color: #808080; color:white;padding:0.5rem 0.8rem 0.5rem 0.8rem;border-radius:0.3rem">UnHide
+                                Post</button>
+                        @else
+                            <button type="submit"
+                                style="background-color: #808080; color:white;padding:0.5rem 0.8rem 0.5rem 0.8rem;border-radius:0.3rem">Hide
+                                Post</button>
+                        @endif
+                    </form>
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="mr-2">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            style="background-color: red ; color:white;padding:0.5rem 0.8rem 0.5rem 0.8rem;border-radius:0.3rem">Delete
+                            Post</button>
 
-                </form>
-            </div>
+                    </form>
+
+                </div>
                 <div class="flex mb-8" style="gap:5px">
                     @foreach ($post->images as $image)
                         <div class="flex flex-col items-center">

@@ -12,7 +12,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FilterController;
-
+use App\Http\Controllers\PostRequestController;
 
 //open for all
 
@@ -50,7 +50,9 @@ Route::middleware('auth')->group(function(){
     Route::delete('/image/{image}', [PostController::class, 'deleteImage'])->name('deleteImage');
     Route::resource('profile',ProfileController::class);
     Route::resource('posts',PostController::class);
-
+    Route::put('posts/status/{post}', [PostController::class, 'status'])->name('posts.status');
+    Route::get('/post/SendRequest/{post}', [ProfileController::class, 'submit'])->name('posts.submit');
+    Route::post('/request/create', [PostRequestController::class, 'create'])->name('request');
 });
 
 
@@ -65,9 +67,6 @@ Route::middleware('auth', 'CheckRole:admin')->group(function () {
     Route::post('users/access', [UserController::class, 'access'])->name('users.access');
     Route::post('users/role', [UserController::class, 'role'])->name('users.role');
     Route::put('posts/access/{post}', [DashboardController::class, 'access'])->name('posts.access');
-
-    
-
 });
 
 

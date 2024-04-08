@@ -28,7 +28,8 @@
                                                     <th>Email</th>
                                                     <th>Role</th>
                                                     <th>Acces</th>
-                                                    <th>Created_at</th>
+                                                    <th>Created</th>
+                                                    <th>Updated</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -40,7 +41,8 @@
                                                         <td>{{ $user->email }}</td>
                                                         <td>{{ $user->role }}</td>
                                                         <td>{{ $user->access }}</td>
-                                                        <td>{{ $user->created_at }}</td>
+                                                        <td>{{ $createdAt[$user->id] }}</td>
+                                                        <td>{{ $updatedAt[$user->id] }}</td>
                                                         <td>
                                                             <button type="button" class="btn btn-success"
                                                                 data-toggle="dropdown">Actions</button>
