@@ -106,8 +106,7 @@ class PostController extends Controller
         $countries = $this->CountryRepository->get();
         $cities = $this->CityRepository->get();
 
-        $requests = PostRequest::where('post_id',$post->id)->get();
-        $sent = isset($requests[0]);
+        $sent = isset($post->request);
         return view('profile.post.edit', compact('post', 'categories', 'subcategories','user','countries','cities','sent'));
     }
 

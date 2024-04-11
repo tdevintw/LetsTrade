@@ -9,6 +9,8 @@ interface UserRepositoryInterface{
 
     public function destory(object $user);
 
+    public function update(object $user, $column, $value);
+    
     public function count();
 
     public function calculate($column,$value);

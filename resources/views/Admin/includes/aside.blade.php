@@ -75,7 +75,7 @@
                         </a>
                     </li>
                     <li class="nav-item w-100">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{route('requests.index')}}">
                             <img style="width: 20px" src="https://cdn-icons-png.flaticon.com/256/7257/7257795.png">
                             <span class="ml-3 item-text">Requests</span>
                         </a>

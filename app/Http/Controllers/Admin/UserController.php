@@ -5,17 +5,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
-use App\Repositories\UserRepository;
+use App\Repositories\PostRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     protected $UserRepository;
+    protected $PostRepository;
     
-    public function __construct(UserRepository $UserRepository)
+    public function __construct(UserRepositoryInterface $UserRepository ,PostRepositoryInterface $PostRepository )
     {
         $this->UserRepository = $UserRepository;
+        $this->PostRepository = $PostRepository;
     }
 
     public function index()
@@ -108,6 +111,12 @@ class UserController extends Controller
 
         if($this->UserRepository->find($user,'access') === 'authorized'){
             $this->UserRepository->put($user , 'access','banned');
+            if($user->posts){
+                $posts = $user->posts;
+                foreach($posts as $post):
+                    $this->PostRepository->put($post,'access','unauthorized');
+                endforeach;
+            }
         }else{
             $this->UserRepository->put($user , 'access','authorized');
         }

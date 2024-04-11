@@ -42,7 +42,7 @@
                                                 for="rememberMe">Remember me</label>
                                         </div>
                                         <div class="flex justify-end pt-2">
-                                            <a href="{{ route('password.request') }}" class="underline text-sm">Forgot Password ?</a>
+                                            <a href="{{ route('forget.password.get') }}" class="underline text-sm">Forgot Password ?</a>
                                         </div>
                                         <div class="text-center">
                                             <button type="submit" style="background-color:#ff7f50 "

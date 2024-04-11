@@ -7,4 +7,8 @@ interface RequestRepositoryInterface {
 
     public function create($post_id , $message);
 
+    public function update(object $request , $column , $value);
+
+    public function delete(object $request);
+
 }

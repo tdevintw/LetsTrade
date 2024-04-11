@@ -33,10 +33,15 @@ Route::get('/login', [AuthController::class, 'loginView'])->name('login');
 Route::get('/register', [AuthController::class, 'registerView'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('newlogin');
 Route::post('/register', [AuthController::class, 'register'])->name('newregister');
-Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+// Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+// Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+// Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+// Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
 Route::get('/google/redirect', [App\Http\Controllers\Auth\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [App\Http\Controllers\Auth\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
 
@@ -53,6 +58,7 @@ Route::middleware('auth')->group(function(){
     Route::put('posts/status/{post}', [PostController::class, 'status'])->name('posts.status');
     Route::get('/post/SendRequest/{post}', [ProfileController::class, 'submit'])->name('posts.submit');
     Route::post('/request/create', [PostRequestController::class, 'create'])->name('request');
+    
 });
 
 
@@ -67,6 +73,10 @@ Route::middleware('auth', 'CheckRole:admin')->group(function () {
     Route::post('users/access', [UserController::class, 'access'])->name('users.access');
     Route::post('users/role', [UserController::class, 'role'])->name('users.role');
     Route::put('posts/access/{post}', [DashboardController::class, 'access'])->name('posts.access');
+    Route::get('/requests', [PostRequestController::class, 'index'])->name('requests.index');
+    Route::put('/request/accept/{request}', [PostRequestController::class, 'accept'])->name('request.accept');
+    Route::put('/request/reject/{request}', [PostRequestController::class, 'reject'])->name('request.reject');
+
 });
 
 

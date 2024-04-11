@@ -10,7 +10,7 @@ class RequestRepository implements RequestRepositoryInterface
 
     public function get()
     {
-        return PostRequest::get();
+        return PostRequest::where('status','pending')->get();
     }
 
     public function create($post_id , $message)
@@ -22,6 +22,13 @@ class RequestRepository implements RequestRepositoryInterface
         $request->save();
     }
 
+    public function update(object $request , $column , $value){
+        $request->$column = $value;
+        $request->save();
+    }
 
+    public function delete(object $request){
+      return   $request->delete();
+    }
 
 }

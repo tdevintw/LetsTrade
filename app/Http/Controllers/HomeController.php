@@ -52,7 +52,19 @@ class HomeController extends Controller
 
     public function show(Post $post)
     {
+        
         $user = Auth::user();
+        if($user){
+            if($user->access ==='unauthorized' && $user->role != 'admin'){
+                return view('errors.404');
+            }elseif($post->status === 'hidden' && $user->role != 'admin' && $user->id != $post->user->id){
+                return view('errors.404');
+            }
+        }else{
+            if($post->access ==='unauthorized' || $post->status ==='hidden'){
+                return view('errors.404');
+            }
+        }
         $images = $post->images;       
         $date =  $post->created_at->diffForHumans();          
         return view('post', compact('post', 'user', 'images', 'date'));

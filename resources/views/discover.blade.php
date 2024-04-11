@@ -218,7 +218,7 @@
         </div>
     @endif
     @if ($posts->count() === 0)
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center mb-8">
             <h1 class="mb-4 text-xs sm:text-sm md:text-md lg:text-xl ">Currently, no items are available for trade. Stay
                 tuned for future opportunities!</h1>
             <img class="w-1/2 lg:w-96" src="https://i.ibb.co/mtD6mMf/behold-an-empty-treasure-box-lies-before-you-its.jpg"

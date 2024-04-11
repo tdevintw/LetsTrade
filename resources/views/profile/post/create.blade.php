@@ -155,140 +155,152 @@
         </nav>
 
         <div class="relative w-full mx-auto mt-60 ">
-            <div id="create-container" class="container mx-auto p-6">
-                <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data"
-                    class="max-w-md md:max-w-full lg:max-w-3xl mx-auto">
-                    @csrf
-                    <div class="mb-4">
-                        <label for="city"
-                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Title</label>
-                        <input type="text" id="title" name="title" placeholder="Enter post title"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
-                    </div>
-                    @if ($errors->has('title'))
-                        <p class="text-danger">{{ $errors->first('title') }}</p>
-                    @endif
-                    <div class="mb-4">
-                        <label for="city"
-                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Description</label>
-                        <textarea id="description" name="description" rows="5" placeholder="Enter post description"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"></textarea>
-                    </div>
-                    @if ($errors->has('description'))
-                        <p class="text-danger">{{ $errors->first('description') }}</p>
-                    @endif
+            @if ($user->access === 'banned')
+                <div class="w-full flex flex-col items-center">
 
-                    <div class="mb-4 flex">
 
-                        <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
-                            <div class="mb-4">
-                                <label for="country"
-                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Country</label>
-                                <select name="country_id" id="country_id"
-                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+                    <h5 class="mb-8">You can't create a post because you are banned<h5>
+                            <img style="width: 30rem"
+                                src="https://i.ibb.co/jkLN9Sn/a-chest-of-treasure-locked-with-a-post-that-say-y-upscaled.jpg"
+                                alt="">
+                </div>
+            @else
+                <div id="create-container" class="container mx-auto p-6">
 
-                                    <option value="">Select Country</option>
+                    <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data"
+                        class="max-w-md md:max-w-full lg:max-w-3xl mx-auto">
+                        @csrf
+                        <div class="mb-4">
+                            <label for="city"
+                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Title</label>
+                            <input type="text" id="title" name="title" placeholder="Enter post title"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+                        </div>
+                        @if ($errors->has('title'))
+                            <p class="text-danger">{{ $errors->first('title') }}</p>
+                        @endif
+                        <div class="mb-4">
+                            <label for="city"
+                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Description</label>
+                            <textarea id="description" name="description" rows="5" placeholder="Enter post description"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"></textarea>
+                        </div>
+                        @if ($errors->has('description'))
+                            <p class="text-danger">{{ $errors->first('description') }}</p>
+                        @endif
 
-                                    @foreach ($countries as $country)
-                                        <option value="{{ $country->id }}">{{ $country->name }}</option>
-                                    @endforeach
-                                </select>
+                        <div class="mb-4 flex flex-wrap -mx-3">
+
+                            <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                <div class="mb-4">
+                                    <label for="country"
+                                        class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Country</label>
+                                    <select name="country_id" id="country_id"
+                                        class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+
+                                        <option value="">Select Country</option>
+
+                                        @foreach ($countries as $country)
+                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                <div class="mb-4">
+                                    <label for="city"
+                                        class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">City</label>
+                                    <select name="city_id" id="city_id"
+                                        class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+
+                                        <option value="">Select Country</option>
+
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        @if ($errors->has('city_id'))
+                            <p class="text-danger">{{ $errors->first('city_id') }}</p>
+                        @endif
+                        <div class="mb-4">
+                            <label for="city"
+                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Note</label>
+                            <input type="text" id="note" name="note" placeholder="Enter note (optional)"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+                        </div>
+                        @if ($errors->has('note'))
+                            <p class="text-danger">{{ $errors->first('note') }}</p>
+                        @endif
+
+
+
+                        <div class="mb-4">
+                            <label for="city"
+                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Condition</label>
+                            <select id="condition" name="condition"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+                                <option value="New">New</option>
+                                <option value="Like New">Like New</option>
+                                <option value="Good">Good</option>
+                                <option value="Fair">Fair</option>
+                            </select>
+                        </div>
+                        @if ($errors->has('condition'))
+                            <p class="text-danger">{{ $errors->first('condition') }}</p>
+                        @endif
+                        <div class="flex flex-wrap -mx-3">
+                            <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                <div class="mb-4">
+                                    <label for="category"
+                                        class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Category</label>
+                                    <select id="category_id" name="category_id"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+                                        <option value="">Select Category</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                <div class="mb-4">
+                                    <label for="subcategory"
+                                        class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">SubCategory</label>
+                                    <select id="subcategory_id" name="subcategory_id"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
+                                        <option value="">Select Category</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
-                            <div class="mb-4">
-                                <label for="city"
-                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">City</label>
-                                <select name="city_id" id="city_id"
-                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
-
-                                    <option value="">Select Country</option>
-
-                                </select>
-                            </div>
-
-                        </div>
-
-                    </div>
-                    @if ($errors->has('city_id'))
-                        <p class="text-danger">{{ $errors->first('city_id') }}</p>
-                    @endif
-                    <div class="mb-4">
-                        <label for="city"
-                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Note</label>
-                        <input type="text" id="note" name="note" placeholder="Enter note (optional)"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
-                    </div>
-                    @if ($errors->has('note'))
-                        <p class="text-danger">{{ $errors->first('note') }}</p>
-                    @endif
-
-
-
-                    <div class="mb-4">
-                        <label for="city"
-                            class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Condition</label>
-                        <select id="condition" name="condition"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
-                            <option value="New">New</option>
-                            <option value="Like New">Like New</option>
-                            <option value="Good">Good</option>
-                            <option value="Fair">Fair</option>
-                        </select>
-                    </div>
-                    @if ($errors->has('condition'))
-                        <p class="text-danger">{{ $errors->first('condition') }}</p>
-                    @endif
-                    <div class="flex flex-wrap -mx-3">
-                        <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
-                            <div class="mb-4">
-                                <label for="category"
-                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Category</label>
-                                <select id="category_id" name="category_id"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
-                                    <option value="">Select Category</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
+                        @if ($errors->has('subcategory_id'))
+                            <p class="text-danger">{{ $errors->first('subcategory_id') }}</p>
+                        @endif
+                        <div class="flex w-full ">
+                            <div class="flex mb-4">
+                                <label class="mr-12">Choose Images</label>
+                                <input type="file" name="images[]" multiple>
                             </div>
                         </div>
+                        @if ($errors->has('images'))
+                            <p class="text-danger">{{ $errors->first('images') }}</p>
+                        @endif
 
-                        <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
-                            <div class="mb-4">
-                                <label for="subcategory"
-                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">SubCategory</label>
-                                <select id="subcategory_id" name="subcategory_id"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
-                                    <option value="">Select Category</option>
-                                </select>
-                            </div>
+                        <div class="text-center">
+                            <button type="submit"
+                                class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">Create
+                                Post</button>
                         </div>
-                    </div>
-                    @if ($errors->has('subcategory_id'))
-                        <p class="text-danger">{{ $errors->first('subcategory_id') }}</p>
-                    @endif
-                    <div class="flex w-full ">
-                        <div class="flex mb-4">
-                            <label class="mr-12">Choose Images</label>
-                            <input type="file" name="images[]" multiple>
-                        </div>
-                    </div>
-                    @if ($errors->has('images'))
-                        <p class="text-danger">{{ $errors->first('images') }}</p>
-                    @endif
-            </div>
+                    </form>
 
-            <div class="text-center">
-                <button type="submit"
-                    class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">Create
-                    Post</button>
-            </div>
-            </form>
+
+                </div>
+            @endif
+
         </div>
-
-
-    </div>
 
     </div>
     <script>
