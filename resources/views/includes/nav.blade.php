@@ -9,8 +9,7 @@
                         href="{{route('home')}}"
                         >
                         <img id="Treasure-Trade-image" class="w-12" src="https://i.ibb.co/f4wFF1n/logo2.png " alt="" />
-                        <span id="Treasure-Trade"
-                            class="text-md mr-4 ml-4 whitespace-nowrap font-bold text-slate-700 lg:ml-0">Treasure-Trade</span>
+                        <img class="w-30" src="{{asset('storage/images/title.png')}}" alt="">
                     </a>
                     <button  navbar-trigger
                     
@@ -67,6 +66,7 @@
                                 type="button">
                                 <span class="sr-only">Open user menu</span>
                                 <img class="w-8 h-8 rounded-full"
+                                
                                     src="{{asset('storage/'.$user->image)}}"
                                     alt="user photo" />
                             </button>

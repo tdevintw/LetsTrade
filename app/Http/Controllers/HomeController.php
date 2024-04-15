@@ -32,8 +32,10 @@ class HomeController extends Controller
 
     public function index()
     {
+        
 
         $user = Auth::user();
+
         $posts = $this->PostRepository->pagination('20');
         $images = [];
         if ($posts) {

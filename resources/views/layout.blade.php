@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="{{ asset('assets/css/nucleo-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/argon-dashboard-tailwind.css?v=1.0.1"') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/nucleo-svg.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="{{asset('storage/images/logo2.png')}}">
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/256/4148/4148650.png">
 
 
     <style>
