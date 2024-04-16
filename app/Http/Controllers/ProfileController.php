@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Repositories\CityRepositoryInterface;
 use App\Repositories\CountryRepositoryInterface;
+use App\Repositories\PostRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,12 +19,14 @@ class ProfileController extends Controller
     protected $UserRepository;
     protected $CountryRepository;
     protected $CityRepository;
+    protected $PostRepository;
 
-    public function __construct(UserRepositoryInterface $UserRepository , CountryRepositoryInterface $CountryRepository , CityRepositoryInterface $CityRepository)
+    public function __construct(UserRepositoryInterface $UserRepository , CountryRepositoryInterface $CountryRepository , CityRepositoryInterface $CityRepository , PostRepositoryInterface $PostRepository)
     {
         $this->UserRepository = $UserRepository;
         $this->CityRepository = $CityRepository;
         $this->CountryRepository = $CountryRepository;
+        $this->PostRepository = $PostRepository;
     }
 
     public function index()
@@ -85,5 +88,24 @@ class ProfileController extends Controller
             return view('errors.404');
         }
         
+    }
+
+    public function profile($username){
+
+        $auth = Auth::user();
+        $user = User::where('name',$username)->first();
+        if(!$user){
+            return view('errors.404');
+        }
+        
+
+
+        $posts =  $this->PostRepository->user($user);
+        $count = $posts->count();
+        $images = []; 
+        foreach($posts as $post):
+            $images[$post->id] = $post->images->first()->image;
+        endforeach;
+        return view('profile.profile',compact('user','auth','count','posts','images'));
     }
 }

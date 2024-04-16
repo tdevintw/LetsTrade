@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
 
-    
+
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -53,11 +53,15 @@ class User extends Authenticatable
 
     protected $table = "users";
 
-    public function city(){
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
+
+
 }

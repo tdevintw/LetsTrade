@@ -367,7 +367,7 @@
                         <div class="flex flex-wrap justify-center -mx-3">
                             <div class="w-4/12 max-w-full px-3 flex-0 ">
                                 <div class="flex justify-center mb-6 -mt-6 lg:mb-0 lg:-mt-16">
-                                    <a href="javascript:;">
+                                    <a href="{{ route('profile.visit', $user->name) }}">
                                         <img style="width: 100px; border-radius: 50%;height:100px;"
                                             class="max-w-full border-2 border-white border-solid"
                                             src="{{ asset('storage/' . $user->image) }}" alt="profile image">

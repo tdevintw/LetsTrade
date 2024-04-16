@@ -37,7 +37,7 @@
                                                 @foreach ($users as $user)
                                                     <tr>
                                                         <td>{{ $user->id }}</td>
-                                                        <td>{{ $user->name }}</td>
+                                                        <td><a style="color: #6c757d" href="{{ route('profile.visit', $user->name) }}">{{ $user->name }}</a></td>
                                                         <td>{{ $user->email }}</td>
                                                         <td>{{ $user->role }}</td>
                                                         <td>{{ $user->access }}</td>

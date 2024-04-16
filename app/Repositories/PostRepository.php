@@ -121,5 +121,12 @@ class PostRepository implements PostRepositoryInterface
             ->get();
     }
 
+    public function user(object $user){
+        return Post::where('user_id', $user->id)
+            ->where('access', 'authorized')
+            ->where('status', 'published')
+            ->get();
+    }
+
 
 }

@@ -5,6 +5,7 @@ namespace App\Repositories;
 interface PostRepositoryInterface{
 
     public function get();
+    public function user(object $user);
     public function create(array $data,$user_id);
     public function update(array $data,object $post);
     public function destroy(object $post);

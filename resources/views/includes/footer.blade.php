@@ -6,7 +6,7 @@
           <div class="mb-6 md:mb-0">
               <a href="{{route('home')}}" class="flex items-center">
                   <img src="{{asset('storage/images/logo2.png')}}" class="h-8 me-3" alt="FlowBite Logo" />
-                  <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Treasure-Trade</span>
+                  <img class="w-36" src="{{asset('storage/images/title.png')}}" alt="">
               </a>
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">

@@ -13,6 +13,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\PostRequestController;
+use Symfony\Component\HttpKernel\EventListener\ProfilerListener;
 
 //open for all
 
@@ -26,6 +27,7 @@ Route::get('/logout', function(){
 Route::get('/discover', [FilterController::class, 'index'])->name('discover.index');
 Route::get('/discover/search', [FilterController::class, 'search'])->name('discover.search');
 Route::get('/discover/filter', [FilterController::class, 'filter'])->name('discover.filter');
+Route::get('/profile/{username}', [ProfileController::class, 'profile'])->name('profile.visit');
 //guest users 
 
 Route::middleware('guest')->group(function () {
@@ -33,15 +35,10 @@ Route::get('/login', [AuthController::class, 'loginView'])->name('login');
 Route::get('/register', [AuthController::class, 'registerView'])->name('register');
 Route::post('/login', [AuthController::class, 'login'])->name('newlogin');
 Route::post('/register', [AuthController::class, 'register'])->name('newregister');
-// Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-// Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-// Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-// Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
 Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
-
 Route::get('/google/redirect', [App\Http\Controllers\Auth\GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [App\Http\Controllers\Auth\GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
 

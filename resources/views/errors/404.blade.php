@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evanto</title>
+    <title>Not Found</title>
     <link rel="icon" type="image/x-icon"
         href="{{ asset('storage/images/ticket.png') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
