@@ -35,8 +35,8 @@ class ProfileController extends Controller
         $user = Auth::user();
         $cities = $this->CityRepository->get();
         $countries = $this->CountryRepository->get();
-        
-        return  view('profile.index', compact('user', 'cities', 'countries'));
+        $count = $this->UserRepository->totalPosts($user);
+        return  view('profile.index', compact('user', 'cities', 'countries','count'));
     }
 
     public function update(UpdateUserRequest $request, User $profile)

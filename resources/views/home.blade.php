@@ -10,7 +10,7 @@
                 <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Discover
                     the art of trading items and goods. Join us and embark on a journey where every exchange is a story
                     waiting to
-                    be told. Explore the possibilities with TradeVerse.</p>
+                    be told. Explore the possibilities with TreasureTrade.</p>
             </div>
 
             <div class="hidden lg:mt-0 lg:col-span-6 lg:flex">
@@ -234,7 +234,9 @@
             @endforeach
         </div>
         <div class="flex justify-center gap-2 mb-5">
-            {{ $posts->links() }}
+            {{ $posts->links('vendor.pagination.simple-tailwind') }}
+
+
         </div>
     @endif
     @if ($posts->count() === 0)

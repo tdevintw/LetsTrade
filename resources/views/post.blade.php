@@ -72,9 +72,11 @@
 
                                 </div>
                             @else
+                            <a href="{{route('user',$post->user->id)}}">
                                 <button style="background: #ff7f50"
                                     class="mt-4 w-36 text-white font-bold py-2 px-7 rounded-full text-sm">Start
                                     Chat</button>
+                                </a>
                             @endif
                         @endauth
                         @guest

@@ -158,7 +158,7 @@
 
             @if ($posts)
                 <div class="container mx-auto">
-                    <div class="flex flex-wrap justify-start" style="gap: 1rem">
+                    <div class="sm:md:flex flex-wrap justify-start" style="gap: 1rem">
                         @foreach ($posts as $post)
                             <a href="{{ route('posts.edit', $post->id) }}">
                                 <div style="width:13rem" class=" rounded overflow-hidden shadow-lg">

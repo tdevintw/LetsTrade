@@ -35,7 +35,7 @@
                                                     <tr>
                                                         <td>{{ $request->id }}</td>
                                                         <td>{{ $request->post->user->name }}</td>
-                                                        <td><a href="{{route('post.show',$request->post->id)}}"><button type="button" class="btn btn-primary">Visit Post</button>                                                        </a></td>
+                                                        <td><a href="{{route('post.show',$request->post->id)}}"><button type="button" class="btn btn-primary ">Visit Post</button>                                                        </a></td>
                                                         <td>{{ $request->message }}</td>
                                                         <td>{{ $request->status }}</td>
                                                         <td>{{ $createdAt[$request->id] }}</td>

@@ -61,4 +61,8 @@ class UserRepository implements UserRepositoryInterface
   public function findUser($column,$value){
     return User::where($column,$value)->first();
   }
+
+  public function totalPosts(object $user){
+    return $user->posts->count();
+  }
 }

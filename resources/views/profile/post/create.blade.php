@@ -227,7 +227,7 @@
                         <div class="mb-4">
                             <label for="city"
                                 class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Note</label>
-                            <input type="text" id="note" name="note" placeholder="Enter note (optional)"
+                            <input type="text" id="note" name="note" placeholder="Enter note "
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500">
                         </div>
                         @if ($errors->has('note'))
@@ -280,9 +280,9 @@
                             <p class="text-danger">{{ $errors->first('subcategory_id') }}</p>
                         @endif
                         <div class="flex w-full ">
-                            <div class="flex mb-4">
-                                <label class="mr-12">Choose Images</label>
-                                <input type="file" name="images[]" multiple>
+                            <div class="flex mb-4 flex-wrap">
+                                <label class="mb-8 mr-12 sm:mr-12">Choose Images</label>
+                                <input  type="file" name="images[]" multiple>
                             </div>
                         </div>
                         @if ($errors->has('images'))

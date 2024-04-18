@@ -132,13 +132,14 @@
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="#"
+                    <a href="{{route('home')}}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <img class="w-6" src="https://cdn-icons-png.flaticon.com/256/9073/9073032.png "
                             alt="">
                         <span class="flex-1 ms-3 whitespace-nowrap">Home</span>
                     </a>
                 </li>
+                @auth
                 @if ($auth->role === 'admin')
                     <li>
                         <a href="{{ route('dashboard.index') }}"
@@ -149,7 +150,7 @@
                         </a>
                     </li>
                 @endif
-
+                @endauth
                 <li>
                     <a href="{{ route('posts.create') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -170,7 +171,7 @@
                     <li>
                         <a href="{{ route('register') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <img class="w-6" src="https://cdn-icons-png.flaticon.com/256/1828/1828791.png"
+                            <img class="w-6" src="https://cdn-icons-png.flaticon.com/256/10337/10337227.png"
                                 alt="">
                             <span class="flex-1 ms-3 whitespace-nowrap">Register</span>
                         </a>
@@ -178,7 +179,7 @@
                     <li>
                         <a href="{{ route('login') }}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <img class="w-6" src="https://cdn-icons-png.flaticon.com/256/1828/1828791.png"
+                            <img class="w-6" src="https://cdn-icons-png.flaticon.com/256/3293/3293466.png"
                                 alt="">
                             <span class="flex-1 ms-3 whitespace-nowrap">Login</span>
                         </a>

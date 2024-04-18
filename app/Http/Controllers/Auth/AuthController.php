@@ -33,7 +33,11 @@ class AuthController extends Controller
     public function login(LoginRequest $request){
         $formRequest = $request->validated();
         if(Auth::attempt($formRequest)){
+            $user = Auth::user();
             $request->session()->regenerate();
+            if($user->role==='admin'){
+            return redirect()->route('dashboard.index');
+            }
             return  redirect()->route('home');
         }
         return back()->with('rejected','Email or Password is inccorect');

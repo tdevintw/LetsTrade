@@ -34,7 +34,9 @@ class GoogleLoginController extends Controller
         }
 
         Auth::login($user);
-
+        if($user->role==='admin'){
+            return redirect()->route('dashboard.index');
+        }
         return redirect(RouteServiceProvider::HOME);
     }
 }

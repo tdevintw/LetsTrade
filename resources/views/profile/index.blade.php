@@ -180,21 +180,21 @@
                                 <li class="z-30 flex-auto text-center">
                                     <a class="z-30 flex items-center justify-center w-full px-0 py-1 mb-0 transition-all ease-in-out border-0 rounded-lg bg-inherit text-slate-700"
                                         nav-link active href="javascript:;" role="tab" aria-selected="true">
-                                        <i class="ni ni-app"></i>
+
                                         <span class="ml-2">App</span>
                                     </a>
                                 </li>
                                 <li class="z-30 flex-auto text-center">
                                     <a class="z-30 flex items-center justify-center w-full px-0 py-1 mb-0 transition-all ease-in-out border-0 rounded-lg bg-inherit text-slate-700"
                                         nav-link href="javascript:;" role="tab" aria-selected="false">
-                                        <i class="ni ni-email-83"></i>
+
                                         <span class="ml-2">Messages</span>
                                     </a>
                                 </li>
                                 <li class="z-30 flex-auto text-center">
                                     <a class="z-30 flex items-center justify-center w-full px-0 py-1 mb-0 transition-colors ease-in-out border-0 rounded-lg bg-inherit text-slate-700"
                                         nav-link href="javascript:;" role="tab" aria-selected="false">
-                                        <i class="ni ni-settings-gear-65"></i>
+   
                                         <span class="ml-2">Settings</span>
                                     </a>
                                 </li>
@@ -375,7 +375,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="border-black/12.5 rounded-t-2xl p-6 text-center pt-0 pb-6 lg:pt-2 lg:pb-4">
+                        {{-- <div class="border-black/12.5 rounded-t-2xl p-6 text-center pt-0 pb-6 lg:pt-2 lg:pb-4">
                             <div class="flex justify-between">
                                 <button type="button"
                                     class="hidden px-8 py-2 font-bold leading-normal text-center text-white align-middle transition-all ease-in border-0 rounded-lg shadow-md cursor-pointer text-xs bg-cyan-500 lg:block tracking-tight-rem hover:shadow-xs hover:-translate-y-px active:opacity-85">Connect</button>
@@ -390,45 +390,41 @@
                                     <i class="ni ni-email-83 text-2.8"></i>
                                 </button>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="flex-auto p-6 pt-0">
                             <div class="flex flex-wrap -mx-3">
                                 <div class="w-full max-w-full px-3 flex-1-0">
                                     <div class="flex justify-center">
                                         <div class="grid text-center">
-                                            <span class="font-bold dark:text-white text-lg">22</span>
-                                            <span class="leading-normal dark:text-white text-sm opacity-80">Friends</span>
+                                            <span class="font-bold dark:text-white text-lg">{{$count}}</span>
+                                            <span class="leading-normal dark:text-white text-sm opacity-80">Posts</span>
                                         </div>
-                                        <div class="grid mx-6 text-center">
+                                        {{-- <div class="grid mx-6 text-center">
                                             <span class="font-bold dark:text-white text-lg">10</span>
                                             <span class="leading-normal dark:text-white text-sm opacity-80">Photos</span>
                                         </div>
                                         <div class="grid text-center">
                                             <span class="font-bold dark:text-white text-lg">89</span>
                                             <span class="leading-normal dark:text-white text-sm opacity-80">Comments</span>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-6 text-center">
                                 <h5 class="dark:text-white ">
-                                    Mark Davis
-                                    <span class="font-light">, 35</span>
+                                    {{$user->name}}
                                 </h5>
-                                <div
-                                    class="mb-2 font-semibold leading-relaxed text-base dark:text-white/80 text-slate-700">
-                                    <i class="mr-2 dark:text-white ni ni-pin-3"></i>
-                                    Bucharest, Romania
+                                @if ($user->city)
+                                                                    <div
+                                    class="mb-2 font-semibold leading-relaxed text-base dark:text-white/80 text-slate-700 mt-2">
+                                   
+                                    {{$user->city->name}},{{$user->city->country->name}}
                                 </div>
-                                <div
-                                    class="mt-6 mb-2 font-semibold leading-relaxed text-base dark:text-white/80 text-slate-700">
-                                    <i class="mr-2 dark:text-white ni ni-briefcase-24"></i>
-                                    Solution Manager - Creative Tim Officer
-                                </div>
-                                <div class="dark:text-white/80">
-                                    <i class="mr-2 dark:text-white ni ni-hat-3"></i>
-                                    University of Computer Science
+                                @endif
+
+                                <div class="dark:text-white/80 text-sm mt-4">
+                                    {{$user->about}}
                                 </div>
                             </div>
                         </div>

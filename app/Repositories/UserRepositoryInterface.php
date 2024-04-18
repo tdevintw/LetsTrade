@@ -25,4 +25,6 @@ interface UserRepositoryInterface{
 
     public function findUser($column , $value);
 
+    public function totalPosts(object $user);
+
 }
