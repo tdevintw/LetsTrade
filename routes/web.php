@@ -47,7 +47,7 @@ Route::get('/google/callback', [App\Http\Controllers\Auth\GoogleLoginController:
 
 //authentificated users
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth','revalidate')->group(function(){
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
     Route::delete('/image/{image}', [PostController::class, 'deleteImage'])->name('deleteImage');
     Route::resource('profile',ProfileController::class);
@@ -61,7 +61,7 @@ Route::middleware('auth')->group(function(){
 
 //admin users 
 
-Route::middleware('auth', 'CheckRole:admin')->group(function () {
+Route::middleware('auth', 'CheckRole:admin','revalidate')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/dashboard/posts', [DashboardController::class, 'posts'])->name('dashboard.posts');
     Route::resource('categories', CategoryController::class);
