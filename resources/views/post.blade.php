@@ -13,7 +13,6 @@
                                         <li class="splide__slide"><img style="height: 300px;width:500px;"
                                                 src="{{ asset('storage/' . $image->image) }}" alt=""></li>
                                     @endforeach
-
                                 </ul>
                             </div>
                         </div>
@@ -39,8 +38,8 @@
                     <div class="xs: ml-0 sm:ml-12  flex flex-col pl-12 items-start">
 
                         <span class="text-3xl">{{ $post->title }}</span>
-                        @auth
-                            @if ($user->id === $post->user->id)
+
+                            @if ($user && $user->id === $post->user->id)
                                 <div class="flex items-center justify-between mt-4 ">
 
                                     <a href="{{ route('posts.edit', $post->id) }}"> <button style="background: #ff7f50"
@@ -72,18 +71,15 @@
 
                                 </div>
                             @else
+
                             <a href="{{route('user',$post->user->id)}}">
                                 <button style="background: #ff7f50"
                                     class="mt-4 w-36 text-white font-bold py-2 px-7 rounded-full text-sm">Start
                                     Chat</button>
                                 </a>
                             @endif
-                        @endauth
-                        @guest
-                            <button style="background: #ff7f50"
-                                class="mt-4 w-36 text-white font-bold py-2 px-7 rounded-full text-sm">Start
-                                Chat</button>
-                        @endguest
+                        
+    
 
                         <h5 class="mt-4">Description</h5>
                         <p>{{ $post->description }}</p>

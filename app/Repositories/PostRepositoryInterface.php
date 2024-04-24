@@ -21,5 +21,6 @@ interface PostRepositoryInterface{
     public function filterDuo($column1 , $column2 , $value1 , $value2);
     public function filterSolo($column , $value);
     public function paginationDash($number);
+    public function countObject(object $posts);
 
 }

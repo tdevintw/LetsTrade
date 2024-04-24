@@ -101,7 +101,7 @@ class ProfileController extends Controller
 
 
         $posts =  $this->PostRepository->user($user);
-        $count = $posts->count();
+        $count = $this->PostRepository->countObject($posts);
         $images = []; 
         foreach($posts as $post):
             $images[$post->id] = $post->images->first()->image;

@@ -156,7 +156,8 @@
 
         <div class="relative w-full mx-auto mt-60 ">
 
-            @if ($posts)
+            @if($count>0)
+
                 <div class="container mx-auto">
                     <div class="flex flex-wrap justify-start" style="gap: 1rem">
                         @foreach ($posts as $post)
@@ -180,7 +181,8 @@
                     </div>
                 </div>
             @else
-            <div class="text-center">
+            <div class="flex flex-col items-center">
+                <img src="https://cdn-icons-png.flaticon.com/256/7486/7486754.png" alt="">
                 <h5>No posts added yet </h5>
                 <a class="text-blue-500" href="{{route('posts.create')}}">Create post</a>
             </div>

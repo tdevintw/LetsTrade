@@ -56,8 +56,10 @@ class PostController extends Controller
                 $images[$post->title] = $this->PostRepository->firstImage($post);
             endforeach;
         }
+        $count = $this->PostRepository->countObject($posts);
 
-        return view('profile.post.index', compact('user', 'posts', 'images'));
+
+        return view('profile.post.index', compact('user', 'posts', 'images','count'));
     }
 
     public function create()

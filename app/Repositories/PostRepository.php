@@ -128,5 +128,9 @@ class PostRepository implements PostRepositoryInterface
             ->get();
     }
 
+    public function countObject(object $posts){
+        return $posts->count();
+    }
+
 
 }
