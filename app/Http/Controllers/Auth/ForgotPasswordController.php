@@ -6,11 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request; 
 use DB; 
 use Carbon\Carbon; 
-use App\Models\User; 
-use Mail; 
+use App\Models\User;  
 use Hash;
 use Illuminate\Support\Str;
-  
+use Illuminate\Support\Facades\Mail;
 class ForgotPasswordController extends Controller
 {
       /**
@@ -30,6 +29,7 @@ class ForgotPasswordController extends Controller
        */
       public function submitForgetPasswordForm(Request $request)
       {
+ 
           $request->validate([
               'email' => 'required|email|exists:users',
           ]);

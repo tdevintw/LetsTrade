@@ -70,8 +70,16 @@
                                     </form>
 
                                 </div>
-                            @else
+                            @elseif($user && $user->access ==='banned')
+                            <div class="flex items-center mt-4">
 
+                           
+                                <img class="w-6" src="https://cdn-icons-png.flaticon.com/256/564/564619.png" alt="">
+                                <p style="color: #ef794e"
+                                    class="ml-1 font-bold  text-sm">You are banned from chat</p>
+                                </div>
+                               
+                            @else
                             <a href="{{route('user',$post->user->id)}}">
                                 <button style="background: #ff7f50"
                                     class="mt-4 w-36 text-white font-bold py-2 px-7 rounded-full text-sm">Start
@@ -105,11 +113,13 @@
                     <p class="mt-4 text-sm ml-4"><b>{{ $date }}</b></p>
                     <div class="ml-4 mt-4">
                         <h4>Trade By</h4>
+                        <a title="Visit Profile" href="{{ route('profile.visit', $post->user->name) }}">
                         <div class="mt-2 flex items-center">
                             <img class="rounded-full w-12" src="{{ asset('storage/' . $post->user->image) }}"
                                 alt="">
                             <span class="ml-4">{{ $post->user->name }}</span>
                         </div>
+                    </a>
                     </div>
                 </div>
             </div>
